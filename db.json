@@ -1,0 +1,78 @@
+{
+  "pets": [
+    {
+      "id": 1,
+      "categoryId": "cats",
+      "name": "Candy",
+      "breedName": "Metis cat",
+      "isFavorite": false,
+      "imageUrl": "https://www.artistiqueacres.ca/images/cute-cat.jpg"
+    },
+    {
+      "id": 2,
+      "categoryId": "dogs",
+      "name": "Seed",
+      "breedName": "Corgi",
+      "isFavorite": false,
+      "imageUrl": "https://img.freepik.com/premium-photo/welsh-corgi-puppy-sits-white-background_106368-5722.jpg?w=500"
+    },
+
+    {
+      "id": 3,
+      "categoryId": "dogs",
+      "name": "Jack",
+      "breedName": "Сollie",
+      "isFavorite": false,
+      "imageUrl": "https://thumbs.dreamstime.com/b/rough-collie-scottish-shepherd-14316671.jpg"
+    },
+
+    {
+      "id": 4,
+      "categoryId": "dogs",
+      "name": "Honey",
+      "breedName": "Jack Russell",
+      "isFavorite": false,
+      "imageUrl": "https://media.istockphoto.com/photos/closeup-of-a-jack-russell-terrier-panting-isolated-on-white-picture-id823787942?k=20&m=823787942&s=612x612&w=0&h=13RwOEh2Hs5Cw4-dcDFJzMuZFroftGnXPXJw_Y3GviE="
+    },
+    {
+      "id": 5,
+      "categoryId": "cats",
+      "name": "Fish Hunter",
+      "breedName": "Britain cat",
+      "isFavorite": false,
+      "imageUrl": "https://thumbs.dreamstime.com/b/portrait-gray-tabby-cat-white-background-lovely-pet-portrait-gray-tabby-cat-white-background-126243718.jpg"
+    }
+  ],
+  "categories": [
+    {
+      "id": "cats",
+      "title": "Cats",
+      "iconCodePoint": "0xf6be"
+    },
+    {
+      "id": "dogs",
+      "title": "Dogs",
+      "iconCodePoint": "0xf6d3"
+    },
+    {
+      "id": "birds",
+      "title": "Birds",
+      "iconCodePoint": "0xf535"
+    },
+    {
+      "id": "fishes",
+      "title": "Fish",
+      "iconCodePoint": "0xe4f2"
+    },
+    {
+      "id": "snakes",
+      "title": "Snakes",
+      "iconCodePoint": "0xe579"
+    },
+    {
+      "id": "horses",
+      "title": "Horses",
+      "iconCodePoint": "0xf6f0"
+    }
+  ]
+}
