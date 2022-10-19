@@ -1,8 +1,18 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 part 'pet_model.freezed.dart';
 part 'pet_model.g.dart';
+
+@freezed
+class PetAnthropometry with _$PetAnthropometry {
+  const factory PetAnthropometry({
+    required String label,
+    required String value,
+  }) = _PetAnthropometry;
+
+  factory PetAnthropometry.fromJson(Map<String, dynamic> json) =>
+      _$PetAnthropometryFromJson(json);
+}
 
 @freezed
 class PetModel with _$PetModel {
@@ -12,7 +22,9 @@ class PetModel with _$PetModel {
       required String name,
       required String breedName,
       required bool isFavorite,
-      required String imageUrl}) = _PetModel;
+      required String imageUrl,
+      required String description,
+      required List<PetAnthropometry> anthropometry}) = _PetModel;
 
   factory PetModel.fromJson(Map<String, dynamic> json) =>
       _$PetModelFromJson(json);

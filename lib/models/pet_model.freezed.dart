@@ -14,6 +14,160 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+PetAnthropometry _$PetAnthropometryFromJson(Map<String, dynamic> json) {
+  return _PetAnthropometry.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PetAnthropometry {
+  String get label => throw _privateConstructorUsedError;
+  String get value => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PetAnthropometryCopyWith<PetAnthropometry> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PetAnthropometryCopyWith<$Res> {
+  factory $PetAnthropometryCopyWith(
+          PetAnthropometry value, $Res Function(PetAnthropometry) then) =
+      _$PetAnthropometryCopyWithImpl<$Res>;
+  $Res call({String label, String value});
+}
+
+/// @nodoc
+class _$PetAnthropometryCopyWithImpl<$Res>
+    implements $PetAnthropometryCopyWith<$Res> {
+  _$PetAnthropometryCopyWithImpl(this._value, this._then);
+
+  final PetAnthropometry _value;
+  // ignore: unused_field
+  final $Res Function(PetAnthropometry) _then;
+
+  @override
+  $Res call({
+    Object? label = freezed,
+    Object? value = freezed,
+  }) {
+    return _then(_value.copyWith(
+      label: label == freezed
+          ? _value.label
+          : label // ignore: cast_nullable_to_non_nullable
+              as String,
+      value: value == freezed
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_PetAnthropometryCopyWith<$Res>
+    implements $PetAnthropometryCopyWith<$Res> {
+  factory _$$_PetAnthropometryCopyWith(
+          _$_PetAnthropometry value, $Res Function(_$_PetAnthropometry) then) =
+      __$$_PetAnthropometryCopyWithImpl<$Res>;
+  @override
+  $Res call({String label, String value});
+}
+
+/// @nodoc
+class __$$_PetAnthropometryCopyWithImpl<$Res>
+    extends _$PetAnthropometryCopyWithImpl<$Res>
+    implements _$$_PetAnthropometryCopyWith<$Res> {
+  __$$_PetAnthropometryCopyWithImpl(
+      _$_PetAnthropometry _value, $Res Function(_$_PetAnthropometry) _then)
+      : super(_value, (v) => _then(v as _$_PetAnthropometry));
+
+  @override
+  _$_PetAnthropometry get _value => super._value as _$_PetAnthropometry;
+
+  @override
+  $Res call({
+    Object? label = freezed,
+    Object? value = freezed,
+  }) {
+    return _then(_$_PetAnthropometry(
+      label: label == freezed
+          ? _value.label
+          : label // ignore: cast_nullable_to_non_nullable
+              as String,
+      value: value == freezed
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_PetAnthropometry implements _PetAnthropometry {
+  const _$_PetAnthropometry({required this.label, required this.value});
+
+  factory _$_PetAnthropometry.fromJson(Map<String, dynamic> json) =>
+      _$$_PetAnthropometryFromJson(json);
+
+  @override
+  final String label;
+  @override
+  final String value;
+
+  @override
+  String toString() {
+    return 'PetAnthropometry(label: $label, value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PetAnthropometry &&
+            const DeepCollectionEquality().equals(other.label, label) &&
+            const DeepCollectionEquality().equals(other.value, value));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(label),
+      const DeepCollectionEquality().hash(value));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_PetAnthropometryCopyWith<_$_PetAnthropometry> get copyWith =>
+      __$$_PetAnthropometryCopyWithImpl<_$_PetAnthropometry>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PetAnthropometryToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PetAnthropometry implements PetAnthropometry {
+  const factory _PetAnthropometry(
+      {required final String label,
+      required final String value}) = _$_PetAnthropometry;
+
+  factory _PetAnthropometry.fromJson(Map<String, dynamic> json) =
+      _$_PetAnthropometry.fromJson;
+
+  @override
+  String get label;
+  @override
+  String get value;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PetAnthropometryCopyWith<_$_PetAnthropometry> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 PetModel _$PetModelFromJson(Map<String, dynamic> json) {
   return _PetModel.fromJson(json);
 }
@@ -26,6 +180,9 @@ mixin _$PetModel {
   String get breedName => throw _privateConstructorUsedError;
   bool get isFavorite => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  List<PetAnthropometry> get anthropometry =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +200,9 @@ abstract class $PetModelCopyWith<$Res> {
       String name,
       String breedName,
       bool isFavorite,
-      String imageUrl});
+      String imageUrl,
+      String description,
+      List<PetAnthropometry> anthropometry});
 }
 
 /// @nodoc
@@ -62,6 +221,8 @@ class _$PetModelCopyWithImpl<$Res> implements $PetModelCopyWith<$Res> {
     Object? breedName = freezed,
     Object? isFavorite = freezed,
     Object? imageUrl = freezed,
+    Object? description = freezed,
+    Object? anthropometry = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -88,6 +249,14 @@ class _$PetModelCopyWithImpl<$Res> implements $PetModelCopyWith<$Res> {
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      anthropometry: anthropometry == freezed
+          ? _value.anthropometry
+          : anthropometry // ignore: cast_nullable_to_non_nullable
+              as List<PetAnthropometry>,
     ));
   }
 }
@@ -104,7 +273,9 @@ abstract class _$$_PetModelCopyWith<$Res> implements $PetModelCopyWith<$Res> {
       String name,
       String breedName,
       bool isFavorite,
-      String imageUrl});
+      String imageUrl,
+      String description,
+      List<PetAnthropometry> anthropometry});
 }
 
 /// @nodoc
@@ -125,6 +296,8 @@ class __$$_PetModelCopyWithImpl<$Res> extends _$PetModelCopyWithImpl<$Res>
     Object? breedName = freezed,
     Object? isFavorite = freezed,
     Object? imageUrl = freezed,
+    Object? description = freezed,
+    Object? anthropometry = freezed,
   }) {
     return _then(_$_PetModel(
       id: id == freezed
@@ -151,6 +324,14 @@ class __$$_PetModelCopyWithImpl<$Res> extends _$PetModelCopyWithImpl<$Res>
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      anthropometry: anthropometry == freezed
+          ? _value._anthropometry
+          : anthropometry // ignore: cast_nullable_to_non_nullable
+              as List<PetAnthropometry>,
     ));
   }
 }
@@ -164,7 +345,10 @@ class _$_PetModel implements _PetModel {
       required this.name,
       required this.breedName,
       required this.isFavorite,
-      required this.imageUrl});
+      required this.imageUrl,
+      required this.description,
+      required final List<PetAnthropometry> anthropometry})
+      : _anthropometry = anthropometry;
 
   factory _$_PetModel.fromJson(Map<String, dynamic> json) =>
       _$$_PetModelFromJson(json);
@@ -181,10 +365,18 @@ class _$_PetModel implements _PetModel {
   final bool isFavorite;
   @override
   final String imageUrl;
+  @override
+  final String description;
+  final List<PetAnthropometry> _anthropometry;
+  @override
+  List<PetAnthropometry> get anthropometry {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_anthropometry);
+  }
 
   @override
   String toString() {
-    return 'PetModel(id: $id, categoryId: $categoryId, name: $name, breedName: $breedName, isFavorite: $isFavorite, imageUrl: $imageUrl)';
+    return 'PetModel(id: $id, categoryId: $categoryId, name: $name, breedName: $breedName, isFavorite: $isFavorite, imageUrl: $imageUrl, description: $description, anthropometry: $anthropometry)';
   }
 
   @override
@@ -199,7 +391,11 @@ class _$_PetModel implements _PetModel {
             const DeepCollectionEquality().equals(other.breedName, breedName) &&
             const DeepCollectionEquality()
                 .equals(other.isFavorite, isFavorite) &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
+            const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality()
+                .equals(other._anthropometry, _anthropometry));
   }
 
   @JsonKey(ignore: true)
@@ -211,7 +407,9 @@ class _$_PetModel implements _PetModel {
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(breedName),
       const DeepCollectionEquality().hash(isFavorite),
-      const DeepCollectionEquality().hash(imageUrl));
+      const DeepCollectionEquality().hash(imageUrl),
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(_anthropometry));
 
   @JsonKey(ignore: true)
   @override
@@ -233,7 +431,9 @@ abstract class _PetModel implements PetModel {
       required final String name,
       required final String breedName,
       required final bool isFavorite,
-      required final String imageUrl}) = _$_PetModel;
+      required final String imageUrl,
+      required final String description,
+      required final List<PetAnthropometry> anthropometry}) = _$_PetModel;
 
   factory _PetModel.fromJson(Map<String, dynamic> json) = _$_PetModel.fromJson;
 
@@ -249,6 +449,10 @@ abstract class _PetModel implements PetModel {
   bool get isFavorite;
   @override
   String get imageUrl;
+  @override
+  String get description;
+  @override
+  List<PetAnthropometry> get anthropometry;
   @override
   @JsonKey(ignore: true)
   _$$_PetModelCopyWith<_$_PetModel> get copyWith =>

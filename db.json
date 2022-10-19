@@ -6,7 +6,26 @@
       "name": "Candy",
       "breedName": "Metis cat",
       "isFavorite": false,
-      "imageUrl": "https://www.artistiqueacres.ca/images/cute-cat.jpg"
+      "imageUrl": "https://www.artistiqueacres.ca/images/cute-cat.jpg",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "anthropometry": [
+        {
+          "label": "Sex",
+          "value": "Female"
+        },
+        {
+          "label": "Color",
+          "value": "Brown"
+        },
+        {
+          "label": "Weight",
+          "value": "2 Kg"
+        },
+        {
+          "label": "Age",
+          "value": "2 Years"
+        }
+      ]
     },
     {
       "id": 2,
@@ -14,7 +33,26 @@
       "name": "Seed",
       "breedName": "Corgi",
       "isFavorite": false,
-      "imageUrl": "https://img.freepik.com/premium-photo/welsh-corgi-puppy-sits-white-background_106368-5722.jpg?w=500"
+      "imageUrl": "https://img.freepik.com/premium-photo/welsh-corgi-puppy-sits-white-background_106368-5722.jpg?w=500",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "anthropometry": [
+        {
+          "label": "Sex",
+          "value": "Female"
+        },
+        {
+          "label": "Color",
+          "value": "Brown"
+        },
+        {
+          "label": "Weight",
+          "value": "2 Kg"
+        },
+        {
+          "label": "Age",
+          "value": "2 Years"
+        }
+      ]
     },
 
     {
@@ -23,7 +61,26 @@
       "name": "Jack",
       "breedName": "Сollie",
       "isFavorite": false,
-      "imageUrl": "https://thumbs.dreamstime.com/b/rough-collie-scottish-shepherd-14316671.jpg"
+      "imageUrl": "https://thumbs.dreamstime.com/b/rough-collie-scottish-shepherd-14316671.jpg",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "anthropometry": [
+        {
+          "label": "Sex",
+          "value": "Female"
+        },
+        {
+          "label": "Color",
+          "value": "Brown"
+        },
+        {
+          "label": "Weight",
+          "value": "2 Kg"
+        },
+        {
+          "label": "Age",
+          "value": "2 Years"
+        }
+      ]
     },
 
     {
@@ -32,7 +89,26 @@
       "name": "Honey",
       "breedName": "Jack Russell",
       "isFavorite": false,
-      "imageUrl": "https://media.istockphoto.com/photos/closeup-of-a-jack-russell-terrier-panting-isolated-on-white-picture-id823787942?k=20&m=823787942&s=612x612&w=0&h=13RwOEh2Hs5Cw4-dcDFJzMuZFroftGnXPXJw_Y3GviE="
+      "imageUrl": "https://media.istockphoto.com/photos/closeup-of-a-jack-russell-terrier-panting-isolated-on-white-picture-id823787942?k=20&m=823787942&s=612x612&w=0&h=13RwOEh2Hs5Cw4-dcDFJzMuZFroftGnXPXJw_Y3GviE=",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "anthropometry": [
+        {
+          "label": "Sex",
+          "value": "Female"
+        },
+        {
+          "label": "Color",
+          "value": "Brown"
+        },
+        {
+          "label": "Weight",
+          "value": "2 Kg"
+        },
+        {
+          "label": "Age",
+          "value": "2 Years"
+        }
+      ]
     },
     {
       "id": 5,
@@ -40,7 +116,26 @@
       "name": "Fish Hunter",
       "breedName": "Britain cat",
       "isFavorite": false,
-      "imageUrl": "https://thumbs.dreamstime.com/b/portrait-gray-tabby-cat-white-background-lovely-pet-portrait-gray-tabby-cat-white-background-126243718.jpg"
+      "imageUrl": "https://thumbs.dreamstime.com/b/portrait-gray-tabby-cat-white-background-lovely-pet-portrait-gray-tabby-cat-white-background-126243718.jpg",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "anthropometry": [
+        {
+          "label": "Sex",
+          "value": "Female"
+        },
+        {
+          "label": "Color",
+          "value": "Brown"
+        },
+        {
+          "label": "Weight",
+          "value": "2 Kg"
+        },
+        {
+          "label": "Age",
+          "value": "2 Years"
+        }
+      ]
     }
   ],
   "categories": [

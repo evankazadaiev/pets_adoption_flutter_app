@@ -2,6 +2,10 @@ part of 'pet_screen_cubit.dart';
 
 @freezed
 class PetScreenState with _$PetScreenState {
+  // const factory PetScreenState({
+  //   @Default(false) bool isButtonShown,
+  // }) = _PetScreenState;
+
   const factory PetScreenState.initial() = _PetScreenStateInitial;
   const factory PetScreenState.loading() = _PetScreenStateLoading;
   const factory PetScreenState.loaded({required PetModel petDetails}) =

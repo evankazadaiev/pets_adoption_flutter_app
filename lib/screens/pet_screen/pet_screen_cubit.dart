@@ -14,19 +14,13 @@ class PetScreenCubit extends Cubit<PetScreenState> {
 
   fetchAnimalDetails(int petId) async {
     try {
-      emit(PetScreenState.loading());
+      emit(const PetScreenState.loading());
       await Future.delayed(const Duration(seconds: 3));
       final petDetails = await _petsRepository.fetchAnimalDetails(petId);
       print(petDetails);
       if (petDetails != null) {
         emit(PetScreenState.loaded(petDetails: PetModel.fromJson(petDetails)));
       }
-      // emit();
-      // if (state is _HomeScreenStateLoaded) {
-      //   emit((state as _HomeScreenStateLoaded).copyWith(list: result));
-      // } else {
-      //   emit(HomeScreenState.loaded(list: result, categories: []));
-      // }
     } catch (error) {
       print(error);
       // emit(const HomeScreenState.error());

@@ -1,0 +1,13 @@
+{
+  "id": 1,
+  "categoryId": "dogs",
+  "name": "Rock",
+  "breedName": "Corgi",
+  "isFavorite": false,
+  "imageUrl": "test",
+  "description": "test",
+  "anthropometry": [{
+    "label": "test",
+    "value": "test"
+  }]
+}
