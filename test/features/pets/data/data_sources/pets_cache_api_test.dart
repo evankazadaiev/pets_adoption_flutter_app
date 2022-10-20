@@ -22,7 +22,7 @@ void main() {
 
   group("getLastCategories", () {
     final testAllCategoriesListString =
-        [fixture("pet_category.json")].toString();
+        jsonEncode([jsonDecode(fixture("pet_category.json"))]);
     final testAllCategoriesListModels = [
       PetCategory.fromJson(json.decode(fixture("pet_category.json")))
     ];
@@ -43,7 +43,7 @@ void main() {
 
       verify(() => mockSharedPreferences.getString(CACHED_ALL_CATEGORIES))
           .called(1);
-      expect(result, equals(testAllCategoriesListModels));
+      expect(result, equals(testAllCategoriesListString));
     });
 
     test("should throw CacheException in case if there is no cache value",

@@ -6,13 +6,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../core/error/exceptions.dart';
 
 abstract class IPetsCacheApi {
-  Future<List<PetModel>> getLastPets();
-  Future<List<PetCategory>> getLastCategories();
+  Future<String> getLastPets();
+  Future<String> getLastCategories();
   Future<bool> cacheAllPets(List<PetModel> petsToCache);
   Future<bool> cachePetsByCategory(
       String categoryId, List<PetModel> petsToCache);
   Future<bool> cacheAllCategories(List<PetCategory> categoriesToCache);
-  Future<List<PetModel>> getLastPetsByCategory(String categoryId);
+  Future<String> getLastPetsByCategory(String categoryId);
 }
 
 const CACHED_ALL_PETS = "CACHED_ALL_PETS";
@@ -37,29 +37,22 @@ class PetsCacheApi implements IPetsCacheApi {
   }
 
   @override
-  Future<List<PetModel>> getLastPets() {
+  Future<String> getLastPets() {
     final jsonString = sharedPreferences.getString(CACHED_ALL_PETS);
 
     if (jsonString != null) {
-      final List<dynamic> decoded = jsonDecode(jsonString);
-      final list = decoded.map<PetModel>((e) => PetModel.fromJson(e)).toList();
-
-      return Future.value(list);
+      return Future.value(jsonString);
     }
 
     throw CacheException();
   }
 
   @override
-  Future<List<PetCategory>> getLastCategories() {
+  Future<String> getLastCategories() {
     final jsonString = sharedPreferences.getString(CACHED_ALL_CATEGORIES);
 
     if (jsonString != null) {
-      final List<dynamic> decoded = jsonDecode(jsonString);
-      final list =
-          decoded.map<PetCategory>((e) => PetCategory.fromJson(e)).toList();
-
-      return Future.value(list);
+      return Future.value(jsonString);
     }
 
     throw CacheException();
@@ -73,14 +66,11 @@ class PetsCacheApi implements IPetsCacheApi {
   }
 
   @override
-  Future<List<PetModel>> getLastPetsByCategory(String categoryId) {
+  Future<String> getLastPetsByCategory(String categoryId) {
     final jsonString = sharedPreferences.getString(categoryId);
 
     if (jsonString != null) {
-      final List<dynamic> decoded = jsonDecode(jsonString);
-      final list = decoded.map<PetModel>((e) => PetModel.fromJson(e)).toList();
-
-      return Future.value(list);
+      return Future.value(jsonString);
     }
 
     throw CacheException();

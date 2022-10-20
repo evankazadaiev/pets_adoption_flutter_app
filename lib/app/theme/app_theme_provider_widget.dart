@@ -2,11 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'cubit/app_theme_cubit.dart';
 
-/// Widget included in the tree to supply the current application theme via [BuildContext]
-///
-/// Since it is a descendant of [InheritedWidget], this allows you to reach the provider from each widget,
-/// if you include the provider in the base root of the entire widget structure
-/// More about [InheritedWidget] (https://www.youtube.com/watch?v=1t-8rBCGBYw)
 class AppThemeProvider extends InheritedWidget {
   final AppTheme theme;
 
@@ -23,12 +18,12 @@ class AppThemeProvider extends InheritedWidget {
   bool updateShouldNotify(covariant InheritedWidget oldWidget) => true;
 
   static AppThemeProvider of(BuildContext context) {
-    final themeProvider =
+    final provider =
         context.dependOnInheritedWidgetOfExactType<AppThemeProvider>();
-    if (themeProvider == null) {
-      throw StateError('AppThemeProvider are not provider in widget three');
+    if (provider == null) {
+      throw StateError('no provider in the widget tree');
     }
 
-    return themeProvider;
+    return provider;
   }
 }

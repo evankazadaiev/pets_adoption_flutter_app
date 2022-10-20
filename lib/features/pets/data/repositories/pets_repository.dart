@@ -10,16 +10,25 @@ import 'package:pets_adoption/features/pets/data/data_sources/pets_api.dart';
 import 'package:pets_adoption/features/pets/data/data_sources/pets_cache_api.dart';
 import 'package:pets_adoption/features/pets/domain/repositories/pets_repository_interface.dart';
 
+import '../adapters/pets_cache_adapter.dart';
+
 class PetsRepository implements IPetsRepository {
   final IPetsRemoteApi petsRemoteApi;
   final IPetsCacheApi petsCacheApi;
+
+  late final PetsCacheAdapter _petsAdapter;
+  late final CategoriesCacheAdapter _categoriesAdapter;
+  late final PetsByCategoryCacheAdapter _petsByCategoryAdapter;
+
   final INetworkConnectivity networkConnectivity;
 
   PetsRepository({
     required this.petsRemoteApi,
     required this.petsCacheApi,
     required this.networkConnectivity,
-  });
+  })  : _petsAdapter = PetsCacheAdapter(petsCacheApi),
+        _categoriesAdapter = CategoriesCacheAdapter(petsCacheApi),
+        _petsByCategoryAdapter = PetsByCategoryCacheAdapter(petsCacheApi);
 
   @override
   Future<Either<Failure, List<PetCategory>>> getAllCategories() async {
@@ -44,7 +53,7 @@ class PetsRepository implements IPetsRepository {
 
   Future<Either<Failure, List<PetCategory>>> _getAllCategoriesOffline() async {
     try {
-      final response = await petsCacheApi.getLastCategories();
+      final response = await _categoriesAdapter.execute();
       return Right(response);
     } on CacheException {
       return const Left(CacheFailure());
@@ -65,7 +74,7 @@ class PetsRepository implements IPetsRepository {
 
   Future<Either<Failure, List<PetModel>>> _getAllPetsOffline() async {
     try {
-      final response = await petsCacheApi.getLastPets();
+      final response = await _petsAdapter.execute();
       return Right(response);
     } on CacheException {
       return const Left(CacheFailure());
@@ -117,7 +126,7 @@ class PetsRepository implements IPetsRepository {
   Future<Either<Failure, List<PetModel>>> _getPetsByCategoryOffline(
       String categoryId) async {
     try {
-      final response = await petsCacheApi.getLastPetsByCategory(categoryId);
+      final response = await _petsByCategoryAdapter.execute(categoryId);
 
       return Right(response);
     } on CacheException {

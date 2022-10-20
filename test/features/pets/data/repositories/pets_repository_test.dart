@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -9,6 +11,8 @@ import 'package:pets_adoption/features/pets/data/data_sources/pets_api.dart';
 import 'package:pets_adoption/features/pets/data/data_sources/pets_cache_api.dart';
 import 'package:pets_adoption/features/pets/data/repositories/pets_repository.dart';
 import 'package:pets_adoption/features/pets/domain/repositories/pets_repository_interface.dart';
+
+import '../../../../fixtures/fixture_reader.dart';
 
 class MockPetsRemoteApi extends Mock implements IPetsRemoteApi {}
 
@@ -35,8 +39,10 @@ void main() {
 
   group("getAllCategories", () {
     final List<PetCategory> categoriesList = [
-      const PetCategory(id: "dogs", title: "Dogs", iconCodePoint: "0x000")
+      PetCategory.fromJson(jsonDecode(fixture("pet_category.json")))
     ];
+    final String categoriesListString =
+        jsonEncode([jsonDecode(fixture("pet_category.json"))]);
 
     group("isOnline", () {
       test("should return data when the call to remote API is successful",
@@ -86,12 +92,12 @@ void main() {
         when(() => mockNetworkConnectivity.isOnline)
             .thenAnswer((_) async => false);
         when(() => mockPetsCacheApi.getLastCategories())
-            .thenAnswer((_) async => categoriesList);
+            .thenAnswer((_) async => categoriesListString);
 
         final result = await repository.getAllCategories();
 
         verify(() => mockPetsCacheApi.getLastCategories());
-        expect(result, equals(Right(categoriesList)));
+        result.fold((l) => null, (r) => expect(r, equals(categoriesList)));
       });
 
       test("should return [CacheFailure] cache doesn't contain last saved data",
@@ -120,6 +126,8 @@ void main() {
           description: "",
           anthropometry: [PetAnthropometry(label: "test", value: "test")]),
     ];
+
+    final String petListString = jsonEncode(petList);
 
     group("isOnline", () {
       test("should return data when the call to remote API is successful",
@@ -169,12 +177,12 @@ void main() {
         when(() => mockNetworkConnectivity.isOnline)
             .thenAnswer((_) async => false);
         when(() => mockPetsCacheApi.getLastPets())
-            .thenAnswer((_) async => petList);
+            .thenAnswer((_) async => petListString);
 
         final result = await repository.getAllPets();
 
         verify(() => mockPetsCacheApi.getLastPets());
-        expect(result, equals(Right(petList)));
+        result.fold((l) => null, (r) => expect(r, equals(petList)));
       });
 
       test("should return [CacheFailure] cache doesn't contain last saved data",
@@ -230,16 +238,12 @@ void main() {
   group("getPetsByCategory", () {
     const testCategoryId = "dogs";
     final List<PetModel> petList = [
-      const PetModel(
-          id: 1,
-          categoryId: "dogs",
-          name: "Rock",
-          breedName: "Corgi",
-          isFavorite: false,
-          imageUrl: "",
-          description: "",
-          anthropometry: [PetAnthropometry(label: "test", value: "test")]),
+      PetModel.fromJson(jsonDecode(fixture("pet.json")))
     ];
+    // final String petListString = jsonEncode([jsonDecode(fixture("pet.json"))]);
+
+    final String petListString =
+        jsonEncode(petList.map((e) => e.toJson()).toList());
 
     group("isOnline", () {
       test(
@@ -295,12 +299,12 @@ void main() {
         when(() => mockNetworkConnectivity.isOnline)
             .thenAnswer((_) async => false);
         when(() => mockPetsCacheApi.getLastPetsByCategory(any()))
-            .thenAnswer((_) async => petList);
+            .thenAnswer((_) async => petListString);
 
         final result = await repository.getPetsByCategory(testCategoryId);
 
         verify(() => mockPetsCacheApi.getLastPetsByCategory(testCategoryId));
-        expect(result, equals(Right(petList)));
+        result.fold((l) => null, (r) => expect(r, equals(petList)));
       });
 
       test("should return [CacheFailure] cache doesn't contain last saved data",
