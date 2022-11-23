@@ -1,6 +1,6 @@
-# pets_adoption
+# Pets adoption app
 
-A new Flutter project.
+Flutter pet project built following Clean Architecture and TDD approach.
 
 ## Getting Started
 
