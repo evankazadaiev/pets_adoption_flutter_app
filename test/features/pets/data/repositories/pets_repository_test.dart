@@ -41,6 +41,11 @@ void main() {
     final List<PetCategory> categoriesList = [
       PetCategory.fromJson(jsonDecode(fixture("pet_category.json")))
     ];
+
+    final List<Map<String, dynamic>> categoriesListJson = [
+      jsonDecode(fixture("pet_category.json"))
+    ];
+
     final String categoriesListString =
         jsonEncode([jsonDecode(fixture("pet_category.json"))]);
 
@@ -52,12 +57,12 @@ void main() {
         when(() => mockPetsCacheApi.cacheAllCategories(any()))
             .thenAnswer((_) async => true);
         when(() => mockPetsRemoteApi.fetchCategories())
-            .thenAnswer((invocation) async => categoriesList);
+            .thenAnswer((invocation) async => categoriesListJson);
 
         final result = await repository.getAllCategories();
 
         verify(() => mockPetsRemoteApi.fetchCategories());
-        expect(result, equals(Right(categoriesList)));
+        result.fold((l) => null, (r) => expect(r, equals(categoriesList)));
       });
 
       test(
@@ -80,7 +85,7 @@ void main() {
         when(() => mockPetsCacheApi.cacheAllCategories(any()))
             .thenAnswer((_) async => true);
         when(() => mockPetsRemoteApi.fetchCategories())
-            .thenAnswer((_) async => categoriesList);
+            .thenAnswer((_) async => categoriesListJson);
 
         await repository.getAllCategories();
         verify(() => mockPetsRemoteApi.fetchCategories());
@@ -115,19 +120,25 @@ void main() {
   });
 
   group("getAllPets", () {
-    final List<PetModel> petList = [
-      const PetModel(
-          id: 1,
-          categoryId: "dogs",
-          name: "Rock",
-          breedName: "Corgi",
-          isFavorite: false,
-          imageUrl: "",
-          description: "",
-          anthropometry: [PetAnthropometry(label: "test", value: "test")]),
-    ];
+    // final List<PetModel> petList = [
+    //   const PetModel(
+    //       id: 1,
+    //       categoryId: "dogs",
+    //       name: "Rock",
+    //       breedName: "Corgi",
+    //       isFavorite: false,
+    //       imageUrl: "",
+    //       description: "",
+    //       anthropometry: [PetAnthropometry(label: "test", value: "test")]),
+    // ];
 
+    final testAllAnimalsResponse = [jsonDecode(fixture("pet.json"))];
+    final petList = testAllAnimalsResponse
+        .map<PetModel>((e) => PetModel.fromJson(e))
+        .toList();
     final String petListString = jsonEncode(petList);
+
+    // final PetModel testPet = PetModel.fromJson(testPetApiResponse);
 
     group("isOnline", () {
       test("should return data when the call to remote API is successful",
@@ -137,12 +148,13 @@ void main() {
         when(() => mockPetsCacheApi.cacheAllPets(any()))
             .thenAnswer((_) async => true);
         when(() => mockPetsRemoteApi.fetchAllAnimals())
-            .thenAnswer((_) async => petList);
+            .thenAnswer((_) async => testAllAnimalsResponse);
 
         final result = await repository.getAllPets();
 
         verify(() => mockPetsRemoteApi.fetchAllAnimals());
-        expect(result, equals(Right(petList)));
+        result.fold((l) => null, (r) => expect(r, equals(petList)));
+        // expect(result, equals(Right(petList)));
       });
 
       test(
@@ -165,7 +177,7 @@ void main() {
         when(() => mockPetsCacheApi.cacheAllPets(any()))
             .thenAnswer((_) async => true);
         when(() => mockPetsRemoteApi.fetchAllAnimals())
-            .thenAnswer((_) async => petList);
+            .thenAnswer((_) async => testAllAnimalsResponse);
 
         await repository.getAllPets();
         verify(() => mockPetsRemoteApi.fetchAllAnimals());
@@ -200,26 +212,19 @@ void main() {
 
   group("getAnimalDetails", () {
     const testId = 1;
-    const PetModel testPet = PetModel(
-        id: testId,
-        categoryId: "dogs",
-        name: "Rock",
-        breedName: "Corgi",
-        isFavorite: false,
-        imageUrl: "",
-        description: "",
-        anthropometry: [PetAnthropometry(label: "test", value: "test")]);
+    final testPetApiResponse = jsonDecode(fixture("pet.json"));
+    final PetModel testPet = PetModel.fromJson(testPetApiResponse);
 
     group("isOnline", () {
       test("should return data when the call to remote API is successful",
           () async {
         when(() => mockPetsRemoteApi.fetchAnimalDetails(any()))
-            .thenAnswer((_) async => testPet);
+            .thenAnswer((_) async => testPetApiResponse);
 
         final result = await repository.getPetDetails(1);
 
         verify(() => mockPetsRemoteApi.fetchAnimalDetails(testId));
-        expect(result, equals(const Right(testPet)));
+        expect(result, equals(Right(testPet)));
       });
 
       test(
@@ -237,6 +242,8 @@ void main() {
 
   group("getPetsByCategory", () {
     const testCategoryId = "dogs";
+    final petListResponse = [jsonDecode(fixture("pet.json"))];
+
     final List<PetModel> petList = [
       PetModel.fromJson(jsonDecode(fixture("pet.json")))
     ];
@@ -254,12 +261,12 @@ void main() {
         when(() => mockPetsCacheApi.cachePetsByCategory(any(), any()))
             .thenAnswer((_) async => true);
         when(() => mockPetsRemoteApi.fetchAnimalsByCategory(any()))
-            .thenAnswer((_) async => petList);
+            .thenAnswer((_) async => petListResponse);
 
         final result = await repository.getPetsByCategory(testCategoryId);
 
         verify(() => mockPetsRemoteApi.fetchAnimalsByCategory(testCategoryId));
-        expect(result, equals(Right(petList)));
+        result.fold((l) => null, (r) => expect(r, equals(petList)));
       });
 
       test(
@@ -283,7 +290,7 @@ void main() {
         when(() => mockPetsCacheApi.cachePetsByCategory(any(), any()))
             .thenAnswer((_) async => true);
         when(() => mockPetsRemoteApi.fetchAnimalsByCategory(any()))
-            .thenAnswer((_) async => petList);
+            .thenAnswer((_) async => petListResponse);
 
         await repository.getPetsByCategory(testCategoryId);
         verify(() => mockPetsRemoteApi.fetchAnimalsByCategory(testCategoryId));

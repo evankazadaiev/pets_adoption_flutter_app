@@ -39,7 +39,8 @@ mixin _$PetModel {
 /// @nodoc
 abstract class $PetModelCopyWith<$Res> {
   factory $PetModelCopyWith(PetModel value, $Res Function(PetModel) then) =
-      _$PetModelCopyWithImpl<$Res>;
+      _$PetModelCopyWithImpl<$Res, PetModel>;
+  @useResult
   $Res call(
       {int id,
       String categoryId,
@@ -52,58 +53,61 @@ abstract class $PetModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PetModelCopyWithImpl<$Res> implements $PetModelCopyWith<$Res> {
+class _$PetModelCopyWithImpl<$Res, $Val extends PetModel>
+    implements $PetModelCopyWith<$Res> {
   _$PetModelCopyWithImpl(this._value, this._then);
 
-  final PetModel _value;
   // ignore: unused_field
-  final $Res Function(PetModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? categoryId = freezed,
-    Object? name = freezed,
-    Object? breedName = freezed,
-    Object? isFavorite = freezed,
-    Object? imageUrl = freezed,
-    Object? description = freezed,
-    Object? anthropometry = freezed,
+    Object? id = null,
+    Object? categoryId = null,
+    Object? name = null,
+    Object? breedName = null,
+    Object? isFavorite = null,
+    Object? imageUrl = null,
+    Object? description = null,
+    Object? anthropometry = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      categoryId: categoryId == freezed
+      categoryId: null == categoryId
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      breedName: breedName == freezed
+      breedName: null == breedName
           ? _value.breedName
           : breedName // ignore: cast_nullable_to_non_nullable
               as String,
-      isFavorite: isFavorite == freezed
+      isFavorite: null == isFavorite
           ? _value.isFavorite
           : isFavorite // ignore: cast_nullable_to_non_nullable
               as bool,
-      imageUrl: imageUrl == freezed
+      imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      description: description == freezed
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      anthropometry: anthropometry == freezed
+      anthropometry: null == anthropometry
           ? _value.anthropometry
           : anthropometry // ignore: cast_nullable_to_non_nullable
               as List<PetAnthropometry>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -113,6 +117,7 @@ abstract class _$$_PetModelCopyWith<$Res> implements $PetModelCopyWith<$Res> {
           _$_PetModel value, $Res Function(_$_PetModel) then) =
       __$$_PetModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int id,
       String categoryId,
@@ -125,56 +130,55 @@ abstract class _$$_PetModelCopyWith<$Res> implements $PetModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PetModelCopyWithImpl<$Res> extends _$PetModelCopyWithImpl<$Res>
+class __$$_PetModelCopyWithImpl<$Res>
+    extends _$PetModelCopyWithImpl<$Res, _$_PetModel>
     implements _$$_PetModelCopyWith<$Res> {
   __$$_PetModelCopyWithImpl(
       _$_PetModel _value, $Res Function(_$_PetModel) _then)
-      : super(_value, (v) => _then(v as _$_PetModel));
+      : super(_value, _then);
 
-  @override
-  _$_PetModel get _value => super._value as _$_PetModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? categoryId = freezed,
-    Object? name = freezed,
-    Object? breedName = freezed,
-    Object? isFavorite = freezed,
-    Object? imageUrl = freezed,
-    Object? description = freezed,
-    Object? anthropometry = freezed,
+    Object? id = null,
+    Object? categoryId = null,
+    Object? name = null,
+    Object? breedName = null,
+    Object? isFavorite = null,
+    Object? imageUrl = null,
+    Object? description = null,
+    Object? anthropometry = null,
   }) {
     return _then(_$_PetModel(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      categoryId: categoryId == freezed
+      categoryId: null == categoryId
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      breedName: breedName == freezed
+      breedName: null == breedName
           ? _value.breedName
           : breedName // ignore: cast_nullable_to_non_nullable
               as String,
-      isFavorite: isFavorite == freezed
+      isFavorite: null == isFavorite
           ? _value.isFavorite
           : isFavorite // ignore: cast_nullable_to_non_nullable
               as bool,
-      imageUrl: imageUrl == freezed
+      imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      description: description == freezed
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      anthropometry: anthropometry == freezed
+      anthropometry: null == anthropometry
           ? _value._anthropometry
           : anthropometry // ignore: cast_nullable_to_non_nullable
               as List<PetAnthropometry>,
@@ -230,16 +234,18 @@ class _$_PetModel implements _PetModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PetModel &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality()
-                .equals(other.categoryId, categoryId) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.breedName, breedName) &&
-            const DeepCollectionEquality()
-                .equals(other.isFavorite, isFavorite) &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.categoryId, categoryId) ||
+                other.categoryId == categoryId) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.breedName, breedName) ||
+                other.breedName == breedName) &&
+            (identical(other.isFavorite, isFavorite) ||
+                other.isFavorite == isFavorite) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             const DeepCollectionEquality()
                 .equals(other._anthropometry, _anthropometry));
   }
@@ -248,17 +254,18 @@ class _$_PetModel implements _PetModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(categoryId),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(breedName),
-      const DeepCollectionEquality().hash(isFavorite),
-      const DeepCollectionEquality().hash(imageUrl),
-      const DeepCollectionEquality().hash(description),
+      id,
+      categoryId,
+      name,
+      breedName,
+      isFavorite,
+      imageUrl,
+      description,
       const DeepCollectionEquality().hash(_anthropometry));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PetModelCopyWith<_$_PetModel> get copyWith =>
       __$$_PetModelCopyWithImpl<_$_PetModel>(this, _$identity);
 

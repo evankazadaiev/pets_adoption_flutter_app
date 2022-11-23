@@ -27,33 +27,37 @@ mixin _$PetsState {
 /// @nodoc
 abstract class $PetsStateCopyWith<$Res> {
   factory $PetsStateCopyWith(PetsState value, $Res Function(PetsState) then) =
-      _$PetsStateCopyWithImpl<$Res>;
+      _$PetsStateCopyWithImpl<$Res, PetsState>;
+  @useResult
   $Res call({List<PetModel> pets, FetchState fetchState});
 }
 
 /// @nodoc
-class _$PetsStateCopyWithImpl<$Res> implements $PetsStateCopyWith<$Res> {
+class _$PetsStateCopyWithImpl<$Res, $Val extends PetsState>
+    implements $PetsStateCopyWith<$Res> {
   _$PetsStateCopyWithImpl(this._value, this._then);
 
-  final PetsState _value;
   // ignore: unused_field
-  final $Res Function(PetsState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pets = freezed,
-    Object? fetchState = freezed,
+    Object? pets = null,
+    Object? fetchState = null,
   }) {
     return _then(_value.copyWith(
-      pets: pets == freezed
+      pets: null == pets
           ? _value.pets
           : pets // ignore: cast_nullable_to_non_nullable
               as List<PetModel>,
-      fetchState: fetchState == freezed
+      fetchState: null == fetchState
           ? _value.fetchState
           : fetchState // ignore: cast_nullable_to_non_nullable
               as FetchState,
-    ));
+    ) as $Val);
   }
 }
 
@@ -63,30 +67,30 @@ abstract class _$$_PetsStateCopyWith<$Res> implements $PetsStateCopyWith<$Res> {
           _$_PetsState value, $Res Function(_$_PetsState) then) =
       __$$_PetsStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({List<PetModel> pets, FetchState fetchState});
 }
 
 /// @nodoc
-class __$$_PetsStateCopyWithImpl<$Res> extends _$PetsStateCopyWithImpl<$Res>
+class __$$_PetsStateCopyWithImpl<$Res>
+    extends _$PetsStateCopyWithImpl<$Res, _$_PetsState>
     implements _$$_PetsStateCopyWith<$Res> {
   __$$_PetsStateCopyWithImpl(
       _$_PetsState _value, $Res Function(_$_PetsState) _then)
-      : super(_value, (v) => _then(v as _$_PetsState));
+      : super(_value, _then);
 
-  @override
-  _$_PetsState get _value => super._value as _$_PetsState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pets = freezed,
-    Object? fetchState = freezed,
+    Object? pets = null,
+    Object? fetchState = null,
   }) {
     return _then(_$_PetsState(
-      pets: pets == freezed
+      pets: null == pets
           ? _value._pets
           : pets // ignore: cast_nullable_to_non_nullable
               as List<PetModel>,
-      fetchState: fetchState == freezed
+      fetchState: null == fetchState
           ? _value.fetchState
           : fetchState // ignore: cast_nullable_to_non_nullable
               as FetchState,
@@ -125,18 +129,17 @@ class _$_PetsState implements _PetsState {
         (other.runtimeType == runtimeType &&
             other is _$_PetsState &&
             const DeepCollectionEquality().equals(other._pets, _pets) &&
-            const DeepCollectionEquality()
-                .equals(other.fetchState, fetchState));
+            (identical(other.fetchState, fetchState) ||
+                other.fetchState == fetchState));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_pets),
-      const DeepCollectionEquality().hash(fetchState));
+      runtimeType, const DeepCollectionEquality().hash(_pets), fetchState);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PetsStateCopyWith<_$_PetsState> get copyWith =>
       __$$_PetsStateCopyWithImpl<_$_PetsState>(this, _$identity);
 }

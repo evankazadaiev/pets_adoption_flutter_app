@@ -34,38 +34,42 @@ mixin _$PetCategory {
 abstract class $PetCategoryCopyWith<$Res> {
   factory $PetCategoryCopyWith(
           PetCategory value, $Res Function(PetCategory) then) =
-      _$PetCategoryCopyWithImpl<$Res>;
+      _$PetCategoryCopyWithImpl<$Res, PetCategory>;
+  @useResult
   $Res call({String id, String title, String iconCodePoint});
 }
 
 /// @nodoc
-class _$PetCategoryCopyWithImpl<$Res> implements $PetCategoryCopyWith<$Res> {
+class _$PetCategoryCopyWithImpl<$Res, $Val extends PetCategory>
+    implements $PetCategoryCopyWith<$Res> {
   _$PetCategoryCopyWithImpl(this._value, this._then);
 
-  final PetCategory _value;
   // ignore: unused_field
-  final $Res Function(PetCategory) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? title = freezed,
-    Object? iconCodePoint = freezed,
+    Object? id = null,
+    Object? title = null,
+    Object? iconCodePoint = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      iconCodePoint: iconCodePoint == freezed
+      iconCodePoint: null == iconCodePoint
           ? _value.iconCodePoint
           : iconCodePoint // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -76,35 +80,35 @@ abstract class _$$_PetCategoryCopyWith<$Res>
           _$_PetCategory value, $Res Function(_$_PetCategory) then) =
       __$$_PetCategoryCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String id, String title, String iconCodePoint});
 }
 
 /// @nodoc
-class __$$_PetCategoryCopyWithImpl<$Res> extends _$PetCategoryCopyWithImpl<$Res>
+class __$$_PetCategoryCopyWithImpl<$Res>
+    extends _$PetCategoryCopyWithImpl<$Res, _$_PetCategory>
     implements _$$_PetCategoryCopyWith<$Res> {
   __$$_PetCategoryCopyWithImpl(
       _$_PetCategory _value, $Res Function(_$_PetCategory) _then)
-      : super(_value, (v) => _then(v as _$_PetCategory));
+      : super(_value, _then);
 
-  @override
-  _$_PetCategory get _value => super._value as _$_PetCategory;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? title = freezed,
-    Object? iconCodePoint = freezed,
+    Object? id = null,
+    Object? title = null,
+    Object? iconCodePoint = null,
   }) {
     return _then(_$_PetCategory(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      iconCodePoint: iconCodePoint == freezed
+      iconCodePoint: null == iconCodePoint
           ? _value.iconCodePoint
           : iconCodePoint // ignore: cast_nullable_to_non_nullable
               as String,
@@ -138,22 +142,19 @@ class _$_PetCategory implements _PetCategory {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PetCategory &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality()
-                .equals(other.iconCodePoint, iconCodePoint));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.iconCodePoint, iconCodePoint) ||
+                other.iconCodePoint == iconCodePoint));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(iconCodePoint));
+  int get hashCode => Object.hash(runtimeType, id, title, iconCodePoint);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PetCategoryCopyWith<_$_PetCategory> get copyWith =>
       __$$_PetCategoryCopyWithImpl<_$_PetCategory>(this, _$identity);
 

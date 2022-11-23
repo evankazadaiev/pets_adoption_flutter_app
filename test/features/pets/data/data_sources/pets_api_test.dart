@@ -40,7 +40,8 @@ void main() {
           .called(1);
     });
 
-    test("should return Categories when the response code is 200 (success)",
+    test(
+        "should return Categories list when the response code is 200 (success)",
         () async {
       when(() => mockDioClient.get(any())).thenAnswer((_) async => Response(
             statusCode: 200,
@@ -50,7 +51,7 @@ void main() {
 
       final result = await petsRemoteApi.fetchCategories();
 
-      expect(result, equals(listOfCategoryModels));
+      expect(result, equals(testResponseData));
     });
 
     test("should throw Server failure is response code is not 200 (failure)",
@@ -65,6 +66,7 @@ void main() {
       expect(() => call(), throwsA(const TypeMatcher<ServerException>()));
     });
   });
+
   group("fetchAllAnimals", () {
     final listOfPets = [PetModel.fromJson(json.decode(fixture("pet.json")))];
     final testResponseData = [json.decode(fixture("pet.json"))];
@@ -83,7 +85,7 @@ void main() {
       verify(() => mockDioClient.get("http://localhost:3000/pets")).called(1);
     });
 
-    test("should return Pets when the response code is 200 (success)",
+    test("should return pets list when the response code is 200 (success)",
         () async {
       when(() => mockDioClient.get(any())).thenAnswer((_) async => Response(
             statusCode: 200,
@@ -93,7 +95,7 @@ void main() {
 
       final result = await petsRemoteApi.fetchAllAnimals();
 
-      expect(result, equals(listOfPets));
+      expect(result, equals(testResponseData));
     });
 
     test("should throw Server failure is response code is not 200 (failure)",
@@ -129,7 +131,8 @@ void main() {
           .called(1);
     });
 
-    test("should return Pet when the response code is 200 (success)", () async {
+    test("should return pet json when the response code is 200 (success)",
+        () async {
       when(() => mockDioClient.get(any())).thenAnswer((_) async => Response(
             statusCode: 200,
             data: testResponseData,
@@ -138,7 +141,7 @@ void main() {
 
       final result = await petsRemoteApi.fetchAnimalDetails(testId);
 
-      expect(result, equals(testPet));
+      expect(result, equals(testResponseData));
     });
 
     test("should throw Server failure is response code is not 200 (failure)",

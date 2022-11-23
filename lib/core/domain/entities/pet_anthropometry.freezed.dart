@@ -33,34 +33,37 @@ mixin _$PetAnthropometry {
 abstract class $PetAnthropometryCopyWith<$Res> {
   factory $PetAnthropometryCopyWith(
           PetAnthropometry value, $Res Function(PetAnthropometry) then) =
-      _$PetAnthropometryCopyWithImpl<$Res>;
+      _$PetAnthropometryCopyWithImpl<$Res, PetAnthropometry>;
+  @useResult
   $Res call({String label, String value});
 }
 
 /// @nodoc
-class _$PetAnthropometryCopyWithImpl<$Res>
+class _$PetAnthropometryCopyWithImpl<$Res, $Val extends PetAnthropometry>
     implements $PetAnthropometryCopyWith<$Res> {
   _$PetAnthropometryCopyWithImpl(this._value, this._then);
 
-  final PetAnthropometry _value;
   // ignore: unused_field
-  final $Res Function(PetAnthropometry) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? label = freezed,
-    Object? value = freezed,
+    Object? label = null,
+    Object? value = null,
   }) {
     return _then(_value.copyWith(
-      label: label == freezed
+      label: null == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
-      value: value == freezed
+      value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -71,31 +74,30 @@ abstract class _$$_PetAnthropometryCopyWith<$Res>
           _$_PetAnthropometry value, $Res Function(_$_PetAnthropometry) then) =
       __$$_PetAnthropometryCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String label, String value});
 }
 
 /// @nodoc
 class __$$_PetAnthropometryCopyWithImpl<$Res>
-    extends _$PetAnthropometryCopyWithImpl<$Res>
+    extends _$PetAnthropometryCopyWithImpl<$Res, _$_PetAnthropometry>
     implements _$$_PetAnthropometryCopyWith<$Res> {
   __$$_PetAnthropometryCopyWithImpl(
       _$_PetAnthropometry _value, $Res Function(_$_PetAnthropometry) _then)
-      : super(_value, (v) => _then(v as _$_PetAnthropometry));
+      : super(_value, _then);
 
-  @override
-  _$_PetAnthropometry get _value => super._value as _$_PetAnthropometry;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? label = freezed,
-    Object? value = freezed,
+    Object? label = null,
+    Object? value = null,
   }) {
     return _then(_$_PetAnthropometry(
-      label: label == freezed
+      label: null == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
-      value: value == freezed
+      value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as String,
@@ -126,19 +128,17 @@ class _$_PetAnthropometry implements _PetAnthropometry {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PetAnthropometry &&
-            const DeepCollectionEquality().equals(other.label, label) &&
-            const DeepCollectionEquality().equals(other.value, value));
+            (identical(other.label, label) || other.label == label) &&
+            (identical(other.value, value) || other.value == value));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(label),
-      const DeepCollectionEquality().hash(value));
+  int get hashCode => Object.hash(runtimeType, label, value);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PetAnthropometryCopyWith<_$_PetAnthropometry> get copyWith =>
       __$$_PetAnthropometryCopyWithImpl<_$_PetAnthropometry>(this, _$identity);
 

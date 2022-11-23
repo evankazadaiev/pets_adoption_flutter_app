@@ -21,17 +21,18 @@ mixin _$GeneralFailure {}
 abstract class $GeneralFailureCopyWith<$Res> {
   factory $GeneralFailureCopyWith(
           GeneralFailure value, $Res Function(GeneralFailure) then) =
-      _$GeneralFailureCopyWithImpl<$Res>;
+      _$GeneralFailureCopyWithImpl<$Res, GeneralFailure>;
 }
 
 /// @nodoc
-class _$GeneralFailureCopyWithImpl<$Res>
+class _$GeneralFailureCopyWithImpl<$Res, $Val extends GeneralFailure>
     implements $GeneralFailureCopyWith<$Res> {
   _$GeneralFailureCopyWithImpl(this._value, this._then);
 
-  final GeneralFailure _value;
   // ignore: unused_field
-  final $Res Function(GeneralFailure) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -43,14 +44,11 @@ abstract class _$$_GeneralFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$$_GeneralFailureCopyWithImpl<$Res>
-    extends _$GeneralFailureCopyWithImpl<$Res>
+    extends _$GeneralFailureCopyWithImpl<$Res, _$_GeneralFailure>
     implements _$$_GeneralFailureCopyWith<$Res> {
   __$$_GeneralFailureCopyWithImpl(
       _$_GeneralFailure _value, $Res Function(_$_GeneralFailure) _then)
-      : super(_value, (v) => _then(v as _$_GeneralFailure));
-
-  @override
-  _$_GeneralFailure get _value => super._value as _$_GeneralFailure;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -84,17 +82,18 @@ mixin _$ServerFailure {}
 abstract class $ServerFailureCopyWith<$Res> {
   factory $ServerFailureCopyWith(
           ServerFailure value, $Res Function(ServerFailure) then) =
-      _$ServerFailureCopyWithImpl<$Res>;
+      _$ServerFailureCopyWithImpl<$Res, ServerFailure>;
 }
 
 /// @nodoc
-class _$ServerFailureCopyWithImpl<$Res>
+class _$ServerFailureCopyWithImpl<$Res, $Val extends ServerFailure>
     implements $ServerFailureCopyWith<$Res> {
   _$ServerFailureCopyWithImpl(this._value, this._then);
 
-  final ServerFailure _value;
   // ignore: unused_field
-  final $Res Function(ServerFailure) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -106,14 +105,11 @@ abstract class _$$_ServerFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ServerFailureCopyWithImpl<$Res>
-    extends _$ServerFailureCopyWithImpl<$Res>
+    extends _$ServerFailureCopyWithImpl<$Res, _$_ServerFailure>
     implements _$$_ServerFailureCopyWith<$Res> {
   __$$_ServerFailureCopyWithImpl(
       _$_ServerFailure _value, $Res Function(_$_ServerFailure) _then)
-      : super(_value, (v) => _then(v as _$_ServerFailure));
-
-  @override
-  _$_ServerFailure get _value => super._value as _$_ServerFailure;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -147,16 +143,18 @@ mixin _$CacheFailure {}
 abstract class $CacheFailureCopyWith<$Res> {
   factory $CacheFailureCopyWith(
           CacheFailure value, $Res Function(CacheFailure) then) =
-      _$CacheFailureCopyWithImpl<$Res>;
+      _$CacheFailureCopyWithImpl<$Res, CacheFailure>;
 }
 
 /// @nodoc
-class _$CacheFailureCopyWithImpl<$Res> implements $CacheFailureCopyWith<$Res> {
+class _$CacheFailureCopyWithImpl<$Res, $Val extends CacheFailure>
+    implements $CacheFailureCopyWith<$Res> {
   _$CacheFailureCopyWithImpl(this._value, this._then);
 
-  final CacheFailure _value;
   // ignore: unused_field
-  final $Res Function(CacheFailure) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -168,14 +166,11 @@ abstract class _$$_CacheFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$$_CacheFailureCopyWithImpl<$Res>
-    extends _$CacheFailureCopyWithImpl<$Res>
+    extends _$CacheFailureCopyWithImpl<$Res, _$_CacheFailure>
     implements _$$_CacheFailureCopyWith<$Res> {
   __$$_CacheFailureCopyWithImpl(
       _$_CacheFailure _value, $Res Function(_$_CacheFailure) _then)
-      : super(_value, (v) => _then(v as _$_CacheFailure));
-
-  @override
-  _$_CacheFailure get _value => super._value as _$_CacheFailure;
+      : super(_value, _then);
 }
 
 /// @nodoc

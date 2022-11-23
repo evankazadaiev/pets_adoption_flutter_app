@@ -29,7 +29,8 @@ mixin _$AppTheme {
 /// @nodoc
 abstract class $AppThemeCopyWith<$Res> {
   factory $AppThemeCopyWith(AppTheme value, $Res Function(AppTheme) then) =
-      _$AppThemeCopyWithImpl<$Res>;
+      _$AppThemeCopyWithImpl<$Res, AppTheme>;
+  @useResult
   $Res call(
       {AppColorTheme colorTheme,
       AppTextTheme textTheme,
@@ -38,38 +39,41 @@ abstract class $AppThemeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AppThemeCopyWithImpl<$Res> implements $AppThemeCopyWith<$Res> {
+class _$AppThemeCopyWithImpl<$Res, $Val extends AppTheme>
+    implements $AppThemeCopyWith<$Res> {
   _$AppThemeCopyWithImpl(this._value, this._then);
 
-  final AppTheme _value;
   // ignore: unused_field
-  final $Res Function(AppTheme) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? colorTheme = freezed,
-    Object? textTheme = freezed,
-    Object? inputTheme = freezed,
-    Object? buttonTheme = freezed,
+    Object? colorTheme = null,
+    Object? textTheme = null,
+    Object? inputTheme = null,
+    Object? buttonTheme = null,
   }) {
     return _then(_value.copyWith(
-      colorTheme: colorTheme == freezed
+      colorTheme: null == colorTheme
           ? _value.colorTheme
           : colorTheme // ignore: cast_nullable_to_non_nullable
               as AppColorTheme,
-      textTheme: textTheme == freezed
+      textTheme: null == textTheme
           ? _value.textTheme
           : textTheme // ignore: cast_nullable_to_non_nullable
               as AppTextTheme,
-      inputTheme: inputTheme == freezed
+      inputTheme: null == inputTheme
           ? _value.inputTheme
           : inputTheme // ignore: cast_nullable_to_non_nullable
               as AppInputTheme,
-      buttonTheme: buttonTheme == freezed
+      buttonTheme: null == buttonTheme
           ? _value.buttonTheme
           : buttonTheme // ignore: cast_nullable_to_non_nullable
               as AppButtonTheme,
-    ));
+    ) as $Val);
   }
 }
 
@@ -79,6 +83,7 @@ abstract class _$$_AppThemeCopyWith<$Res> implements $AppThemeCopyWith<$Res> {
           _$_AppTheme value, $Res Function(_$_AppTheme) then) =
       __$$_AppThemeCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {AppColorTheme colorTheme,
       AppTextTheme textTheme,
@@ -87,36 +92,35 @@ abstract class _$$_AppThemeCopyWith<$Res> implements $AppThemeCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AppThemeCopyWithImpl<$Res> extends _$AppThemeCopyWithImpl<$Res>
+class __$$_AppThemeCopyWithImpl<$Res>
+    extends _$AppThemeCopyWithImpl<$Res, _$_AppTheme>
     implements _$$_AppThemeCopyWith<$Res> {
   __$$_AppThemeCopyWithImpl(
       _$_AppTheme _value, $Res Function(_$_AppTheme) _then)
-      : super(_value, (v) => _then(v as _$_AppTheme));
+      : super(_value, _then);
 
-  @override
-  _$_AppTheme get _value => super._value as _$_AppTheme;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? colorTheme = freezed,
-    Object? textTheme = freezed,
-    Object? inputTheme = freezed,
-    Object? buttonTheme = freezed,
+    Object? colorTheme = null,
+    Object? textTheme = null,
+    Object? inputTheme = null,
+    Object? buttonTheme = null,
   }) {
     return _then(_$_AppTheme(
-      colorTheme: colorTheme == freezed
+      colorTheme: null == colorTheme
           ? _value.colorTheme
           : colorTheme // ignore: cast_nullable_to_non_nullable
               as AppColorTheme,
-      textTheme: textTheme == freezed
+      textTheme: null == textTheme
           ? _value.textTheme
           : textTheme // ignore: cast_nullable_to_non_nullable
               as AppTextTheme,
-      inputTheme: inputTheme == freezed
+      inputTheme: null == inputTheme
           ? _value.inputTheme
           : inputTheme // ignore: cast_nullable_to_non_nullable
               as AppInputTheme,
-      buttonTheme: buttonTheme == freezed
+      buttonTheme: null == buttonTheme
           ? _value.buttonTheme
           : buttonTheme // ignore: cast_nullable_to_non_nullable
               as AppButtonTheme,
@@ -152,25 +156,23 @@ class _$_AppTheme implements _AppTheme {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AppTheme &&
-            const DeepCollectionEquality()
-                .equals(other.colorTheme, colorTheme) &&
-            const DeepCollectionEquality().equals(other.textTheme, textTheme) &&
-            const DeepCollectionEquality()
-                .equals(other.inputTheme, inputTheme) &&
-            const DeepCollectionEquality()
-                .equals(other.buttonTheme, buttonTheme));
+            (identical(other.colorTheme, colorTheme) ||
+                other.colorTheme == colorTheme) &&
+            (identical(other.textTheme, textTheme) ||
+                other.textTheme == textTheme) &&
+            (identical(other.inputTheme, inputTheme) ||
+                other.inputTheme == inputTheme) &&
+            (identical(other.buttonTheme, buttonTheme) ||
+                other.buttonTheme == buttonTheme));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(colorTheme),
-      const DeepCollectionEquality().hash(textTheme),
-      const DeepCollectionEquality().hash(inputTheme),
-      const DeepCollectionEquality().hash(buttonTheme));
+  int get hashCode =>
+      Object.hash(runtimeType, colorTheme, textTheme, inputTheme, buttonTheme);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AppThemeCopyWith<_$_AppTheme> get copyWith =>
       __$$_AppThemeCopyWithImpl<_$_AppTheme>(this, _$identity);
 }

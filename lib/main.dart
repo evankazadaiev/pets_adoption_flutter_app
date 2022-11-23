@@ -3,7 +3,7 @@ import "package:flutter_bloc/flutter_bloc.dart";
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pets_adoption/core/presentation/wrappers/tabs_wrapper/tabs_wrapper.dart';
-import 'package:pets_adoption/screens/pet_screen/pet_screen.dart';
+import 'package:pets_adoption/features/pets/presentation/screens/pet_details_screen.dart';
 
 import 'app/theme/app_theme_provider_widget.dart';
 import 'app/theme/cubit/app_theme_cubit.dart';
@@ -136,7 +136,7 @@ class ThemedApp extends StatelessWidget {
       ),
       home: TabsWrapper(),
       routes: {
-        PetScreen.routeName: (_) => const PetScreen(),
+        PetDetailsScreen.routeName: (_) => const PetDetailsScreen(),
         TabsWrapper.routeName: (_) => TabsWrapper(),
       },
     );

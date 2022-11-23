@@ -1,12 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:pets_adoption/core/domain/entities/entities.dart';
 import 'package:pets_adoption/core/error/exceptions.dart';
 
 abstract class IPetsRemoteApi {
-  Future<List<PetModel>> fetchAllAnimals();
-  Future<List<PetModel>> fetchAnimalsByCategory(String categoryId);
-  Future<List<PetCategory>> fetchCategories();
-  Future<PetModel> fetchAnimalDetails(int id);
+  Future<List<dynamic>> fetchAllAnimals();
+  Future<List<dynamic>> fetchAnimalsByCategory(String categoryId);
+  Future<List<dynamic>> fetchCategories();
+  Future<Map<String, dynamic>> fetchAnimalDetails(int id);
 }
 
 class PetsRemoteApi implements IPetsRemoteApi {
@@ -15,7 +14,7 @@ class PetsRemoteApi implements IPetsRemoteApi {
   PetsRemoteApi({required this.client});
 
   @override
-  Future<List<PetModel>> fetchAllAnimals() async {
+  Future<List<dynamic>> fetchAllAnimals() async {
     try {
       final response = await client.get("http://localhost:3000/pets");
       final data = response.data;
@@ -28,11 +27,7 @@ class PetsRemoteApi implements IPetsRemoteApi {
         throw ServerException();
       }
 
-      final result = data.map<PetModel>((e) => PetModel.fromJson(e)).toList();
-
-      print(result);
-
-      return result;
+      return data;
     } catch (error) {
       print(error);
 
@@ -41,7 +36,7 @@ class PetsRemoteApi implements IPetsRemoteApi {
   }
 
   @override
-  Future<List<PetModel>> fetchAnimalsByCategory(String categoryId) async {
+  Future<List<dynamic>> fetchAnimalsByCategory(String categoryId) async {
     try {
       final response = await client.get("http://localhost:3000/pets",
           queryParameters: {'categoryId': categoryId});
@@ -55,11 +50,7 @@ class PetsRemoteApi implements IPetsRemoteApi {
         throw ServerException();
       }
 
-      final result = data.map<PetModel>((e) => PetModel.fromJson(e)).toList();
-
-      print(result);
-
-      return result;
+      return data;
     } catch (error) {
       print(error);
 
@@ -68,7 +59,7 @@ class PetsRemoteApi implements IPetsRemoteApi {
   }
 
   @override
-  Future<PetModel> fetchAnimalDetails(int id) async {
+  Future<Map<String, dynamic>> fetchAnimalDetails(int id) async {
     try {
       final response = await client.get("http://localhost:3000/pets?id=$id");
       final data = response.data;
@@ -81,11 +72,7 @@ class PetsRemoteApi implements IPetsRemoteApi {
         throw ServerException();
       }
 
-      // final result = data.map<PetModel>((e) => PetModel.fromJson(e)).toList();
-      final result = PetModel.fromJson(data);
-      print(result);
-
-      return result;
+      return data;
     } catch (error) {
       print(error);
 
@@ -94,7 +81,7 @@ class PetsRemoteApi implements IPetsRemoteApi {
   }
 
   @override
-  Future<List<PetCategory>> fetchCategories() async {
+  Future<List<dynamic>> fetchCategories() async {
     try {
       final response = await client.get("http://localhost:3000/categories");
       final data = response.data;
@@ -107,12 +94,7 @@ class PetsRemoteApi implements IPetsRemoteApi {
         throw ServerException();
       }
 
-      final result =
-          data.map<PetCategory>((e) => PetCategory.fromJson(e)).toList();
-
-      print(result);
-
-      return result;
+      return data;
     } catch (error) {
       print(error);
 

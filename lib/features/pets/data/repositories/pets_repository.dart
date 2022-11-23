@@ -10,6 +10,7 @@ import 'package:pets_adoption/features/pets/data/data_sources/pets_api.dart';
 import 'package:pets_adoption/features/pets/data/data_sources/pets_cache_api.dart';
 import 'package:pets_adoption/features/pets/domain/repositories/pets_repository_interface.dart';
 
+import '../adapters/pets_adapter.dart';
 import '../adapters/pets_cache_adapter.dart';
 
 class PetsRepository implements IPetsRepository {
@@ -19,6 +20,10 @@ class PetsRepository implements IPetsRepository {
   late final PetsCacheAdapter _petsAdapter;
   late final CategoriesCacheAdapter _categoriesAdapter;
   late final PetsByCategoryCacheAdapter _petsByCategoryAdapter;
+  late final FetchAllAnimalsAdapter _fetchAllPetsAdapter;
+  late final FetchAllCategoriesAdapter _fetchAllCategoriesAdapter;
+  late final FetchAnimalDetailsAdapter _fetchAnimalDetailsAdapter;
+  late final FetchAllAnimalsByCategoryAdapter _fetchAllAnimalsByCategoryAdapter;
 
   final INetworkConnectivity networkConnectivity;
 
@@ -28,7 +33,12 @@ class PetsRepository implements IPetsRepository {
     required this.networkConnectivity,
   })  : _petsAdapter = PetsCacheAdapter(petsCacheApi),
         _categoriesAdapter = CategoriesCacheAdapter(petsCacheApi),
-        _petsByCategoryAdapter = PetsByCategoryCacheAdapter(petsCacheApi);
+        _petsByCategoryAdapter = PetsByCategoryCacheAdapter(petsCacheApi),
+        _fetchAllPetsAdapter = FetchAllAnimalsAdapter(petsRemoteApi),
+        _fetchAllCategoriesAdapter = FetchAllCategoriesAdapter(petsRemoteApi),
+        _fetchAnimalDetailsAdapter = FetchAnimalDetailsAdapter(petsRemoteApi),
+        _fetchAllAnimalsByCategoryAdapter =
+            FetchAllAnimalsByCategoryAdapter(petsRemoteApi);
 
   @override
   Future<Either<Failure, List<PetCategory>>> getAllCategories() async {
@@ -41,7 +51,7 @@ class PetsRepository implements IPetsRepository {
 
   Future<Either<Failure, List<PetCategory>>> _getAllCategoriesOnline() async {
     try {
-      final response = await petsRemoteApi.fetchCategories();
+      final response = await _fetchAllCategoriesAdapter.execute();
 
       await petsCacheApi.cacheAllCategories(response);
 
@@ -62,7 +72,7 @@ class PetsRepository implements IPetsRepository {
 
   Future<Either<Failure, List<PetModel>>> _getAllPetsOnline() async {
     try {
-      final response = await petsRemoteApi.fetchAllAnimals();
+      final response = await _fetchAllPetsAdapter.execute();
 
       await petsCacheApi.cacheAllPets(response);
 
@@ -93,7 +103,7 @@ class PetsRepository implements IPetsRepository {
   @override
   Future<Either<Failure, PetModel>> getPetDetails(int id) async {
     try {
-      final response = await petsRemoteApi.fetchAnimalDetails(id);
+      final response = await _fetchAnimalDetailsAdapter.execute(id);
 
       return Right(response);
     } on ServerException {
@@ -114,7 +124,8 @@ class PetsRepository implements IPetsRepository {
   Future<Either<Failure, List<PetModel>>> _getPetsByCategoryOnline(
       String categoryId) async {
     try {
-      final response = await petsRemoteApi.fetchAnimalsByCategory(categoryId);
+      final response =
+          await _fetchAllAnimalsByCategoryAdapter.execute(categoryId);
       await petsCacheApi.cachePetsByCategory(categoryId, response);
 
       return Right(response);

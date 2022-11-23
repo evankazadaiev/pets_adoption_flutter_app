@@ -29,7 +29,8 @@ mixin _$CategoriesState {
 abstract class $CategoriesStateCopyWith<$Res> {
   factory $CategoriesStateCopyWith(
           CategoriesState value, $Res Function(CategoriesState) then) =
-      _$CategoriesStateCopyWithImpl<$Res>;
+      _$CategoriesStateCopyWithImpl<$Res, CategoriesState>;
+  @useResult
   $Res call(
       {String? selectedId,
       List<PetCategory> categories,
@@ -37,34 +38,36 @@ abstract class $CategoriesStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CategoriesStateCopyWithImpl<$Res>
+class _$CategoriesStateCopyWithImpl<$Res, $Val extends CategoriesState>
     implements $CategoriesStateCopyWith<$Res> {
   _$CategoriesStateCopyWithImpl(this._value, this._then);
 
-  final CategoriesState _value;
   // ignore: unused_field
-  final $Res Function(CategoriesState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? selectedId = freezed,
-    Object? categories = freezed,
-    Object? fetchState = freezed,
+    Object? categories = null,
+    Object? fetchState = null,
   }) {
     return _then(_value.copyWith(
-      selectedId: selectedId == freezed
+      selectedId: freezed == selectedId
           ? _value.selectedId
           : selectedId // ignore: cast_nullable_to_non_nullable
               as String?,
-      categories: categories == freezed
+      categories: null == categories
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<PetCategory>,
-      fetchState: fetchState == freezed
+      fetchState: null == fetchState
           ? _value.fetchState
           : fetchState // ignore: cast_nullable_to_non_nullable
               as FetchState,
-    ));
+    ) as $Val);
   }
 }
 
@@ -75,6 +78,7 @@ abstract class _$$_CategoriesStateCopyWith<$Res>
           _$_CategoriesState value, $Res Function(_$_CategoriesState) then) =
       __$$_CategoriesStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? selectedId,
       List<PetCategory> categories,
@@ -83,31 +87,29 @@ abstract class _$$_CategoriesStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_CategoriesStateCopyWithImpl<$Res>
-    extends _$CategoriesStateCopyWithImpl<$Res>
+    extends _$CategoriesStateCopyWithImpl<$Res, _$_CategoriesState>
     implements _$$_CategoriesStateCopyWith<$Res> {
   __$$_CategoriesStateCopyWithImpl(
       _$_CategoriesState _value, $Res Function(_$_CategoriesState) _then)
-      : super(_value, (v) => _then(v as _$_CategoriesState));
+      : super(_value, _then);
 
-  @override
-  _$_CategoriesState get _value => super._value as _$_CategoriesState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? selectedId = freezed,
-    Object? categories = freezed,
-    Object? fetchState = freezed,
+    Object? categories = null,
+    Object? fetchState = null,
   }) {
     return _then(_$_CategoriesState(
-      selectedId: selectedId == freezed
+      selectedId: freezed == selectedId
           ? _value.selectedId
           : selectedId // ignore: cast_nullable_to_non_nullable
               as String?,
-      categories: categories == freezed
+      categories: null == categories
           ? _value._categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<PetCategory>,
-      fetchState: fetchState == freezed
+      fetchState: null == fetchState
           ? _value.fetchState
           : fetchState // ignore: cast_nullable_to_non_nullable
               as FetchState,
@@ -149,23 +151,21 @@ class _$_CategoriesState implements _CategoriesState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CategoriesState &&
-            const DeepCollectionEquality()
-                .equals(other.selectedId, selectedId) &&
+            (identical(other.selectedId, selectedId) ||
+                other.selectedId == selectedId) &&
             const DeepCollectionEquality()
                 .equals(other._categories, _categories) &&
-            const DeepCollectionEquality()
-                .equals(other.fetchState, fetchState));
+            (identical(other.fetchState, fetchState) ||
+                other.fetchState == fetchState));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(selectedId),
-      const DeepCollectionEquality().hash(_categories),
-      const DeepCollectionEquality().hash(fetchState));
+  int get hashCode => Object.hash(runtimeType, selectedId,
+      const DeepCollectionEquality().hash(_categories), fetchState);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CategoriesStateCopyWith<_$_CategoriesState> get copyWith =>
       __$$_CategoriesStateCopyWithImpl<_$_CategoriesState>(this, _$identity);
 }

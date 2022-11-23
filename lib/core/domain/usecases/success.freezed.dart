@@ -21,16 +21,18 @@ mixin _$SuccessEmpty {}
 abstract class $SuccessEmptyCopyWith<$Res> {
   factory $SuccessEmptyCopyWith(
           SuccessEmpty value, $Res Function(SuccessEmpty) then) =
-      _$SuccessEmptyCopyWithImpl<$Res>;
+      _$SuccessEmptyCopyWithImpl<$Res, SuccessEmpty>;
 }
 
 /// @nodoc
-class _$SuccessEmptyCopyWithImpl<$Res> implements $SuccessEmptyCopyWith<$Res> {
+class _$SuccessEmptyCopyWithImpl<$Res, $Val extends SuccessEmpty>
+    implements $SuccessEmptyCopyWith<$Res> {
   _$SuccessEmptyCopyWithImpl(this._value, this._then);
 
-  final SuccessEmpty _value;
   // ignore: unused_field
-  final $Res Function(SuccessEmpty) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -42,14 +44,11 @@ abstract class _$$_SuccessEmptyCopyWith<$Res> {
 
 /// @nodoc
 class __$$_SuccessEmptyCopyWithImpl<$Res>
-    extends _$SuccessEmptyCopyWithImpl<$Res>
+    extends _$SuccessEmptyCopyWithImpl<$Res, _$_SuccessEmpty>
     implements _$$_SuccessEmptyCopyWith<$Res> {
   __$$_SuccessEmptyCopyWithImpl(
       _$_SuccessEmpty _value, $Res Function(_$_SuccessEmpty) _then)
-      : super(_value, (v) => _then(v as _$_SuccessEmpty));
-
-  @override
-  _$_SuccessEmpty get _value => super._value as _$_SuccessEmpty;
+      : super(_value, _then);
 }
 
 /// @nodoc

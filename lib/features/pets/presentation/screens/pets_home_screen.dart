@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pets_adoption/features/pets/presentation/cubits/pets_cubit.dart';
-import 'package:pets_adoption/features/pets/presentation/widgets/categories_slider/categories_slider.dart';
-import 'package:pets_adoption/features/pets/presentation/widgets/greeting_text/greeting_text.dart';
-import 'package:pets_adoption/features/pets/presentation/widgets/search_input/search_input.dart';
+import 'package:pets_adoption/features/pets/presentation/widgets/categories_slider.dart';
+import 'package:pets_adoption/features/pets/presentation/widgets/greeting_text.dart';
+import 'package:pets_adoption/features/pets/presentation/widgets/search_input.dart';
 import 'package:pets_adoption/injection.dart';
 
 import '../../../../app/theme/cubit/app_theme_cubit.dart';
 import '../cubits/categories_cubit.dart';
-import '../widgets/pets_sliver_grid/pets_sliver_grid.dart';
+import '../widgets/pets_sliver_grid.dart';
 
 class PetsHomeScreen extends StatelessWidget {
   static const routeName = '/home';

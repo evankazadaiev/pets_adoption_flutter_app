@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:pets_adoption/features/pets/pets.dart';
-import 'package:pets_adoption/screens/search_screen/search_screen.dart';
+import 'package:pets_adoption/features/search/presentation/screens/map_screen.dart';
 
 class TabsWrapper extends StatelessWidget {
   static const routeName = "/home-screen";
@@ -56,7 +56,7 @@ class TabsWrapper extends StatelessWidget {
       controller: _controller,
       screens: [
         const PetsHomeScreen(),
-        SearchScreen(),
+        MapScreen(),
         const PetsHomeScreen(),
         const PetsHomeScreen(),
         const PetsHomeScreen(),
