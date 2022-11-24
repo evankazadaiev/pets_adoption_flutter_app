@@ -6,6 +6,8 @@ Flutter pet project built following Clean Architecture and TDD approach.
 
 ![Simulator Screen Shot - iPhone 11 Pro Max - 2022-11-23 at 14 23 52](https://user-images.githubusercontent.com/26353354/203546284-c21e2eb3-fd56-4801-908f-e0a610283e32.png | width=100)
 
+<img src="https://user-images.githubusercontent.com/26353354/203546284-c21e2eb3-fd56-4801-908f-e0a610283e32.png" width="100px" />
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
