@@ -1,6 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+import 'package:pets_adoption/core/presentation/templates/form_template.dart';
+
+import '../../../../app/theme/cubit/app_theme_cubit.dart';
+import '../../../../core/constants/sizes.dart';
 
 class AddPetScreen extends StatelessWidget {
   const AddPetScreen({Key? key}) : super(key: key);
@@ -23,7 +27,9 @@ class AddPetScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AddPetForm();
+    return FormTemplate(
+      content: [AddPetForm()],
+    );
   }
 }
 
@@ -77,74 +83,69 @@ class AddPetForm extends StatelessWidget {
         builder: (context) {
           final addPetFormBloc = context.read<AddPetFormBloc>();
 
-          return Scaffold(
-            resizeToAvoidBottomInset: false,
-            appBar: AppBar(title: const Text('Add a new pet')),
-            body: FormBlocListener<AddPetFormBloc, String, String>(
-              onSubmitting: (context, state) {
-                // LoadingDialog.show(context);
-              },
-              onSubmissionFailed: (context, state) {
-                // LoadingDialog.hide(context);
-              },
-              onSuccess: (context, state) {
-                // LoadingDialog.hide(context);
+          return FormBlocListener<AddPetFormBloc, String, String>(
+            onSubmitting: (context, state) {
+              // LoadingDialog.show(context);
+            },
+            onSubmissionFailed: (context, state) {
+              // LoadingDialog.hide(context);
+            },
+            onSuccess: (context, state) {
+              // LoadingDialog.hide(context);
 
-                // Navigator.of(context).pushReplacement(
-                //     MaterialPageRoute(builder: (_) => const SuccessScreen()));
-              },
-              onFailure: (context, state) {
-                // LoadingDialog.hide(context);
+              // Navigator.of(context).pushReplacement(
+              //     MaterialPageRoute(builder: (_) => const SuccessScreen()));
+            },
+            onFailure: (context, state) {
+              // LoadingDialog.hide(context);
 
-                ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text(state.failureResponse!)));
-              },
-              child: SingleChildScrollView(
-                physics: const ClampingScrollPhysics(),
-                child: Center(
-                  child: AutofillGroup(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        TextFieldBlocBuilder(
-                          textFieldBloc: addPetFormBloc.petName,
-                          keyboardType: TextInputType.text,
-                          autofillHints: const [
-                            AutofillHints.name,
-                          ],
-                          decoration: const InputDecoration(
-                            labelText: 'Pet name',
-                            prefixIcon: Icon(Icons.pets),
-                          ),
-                        ),
-                        TextFieldBlocBuilder(
-                          textFieldBloc: addPetFormBloc.petBreed,
-                          autofillHints: const [AutofillHints.nameSuffix],
-                          decoration: const InputDecoration(
-                            labelText: 'Pet breed',
-                            prefixIcon: Icon(Icons.pets_sharp),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 250,
-                          child: CheckboxFieldBlocBuilder(
-                            booleanFieldBloc:
-                                addPetFormBloc.showSuccessResponse,
-                            body: Container(
-                              alignment: Alignment.centerLeft,
-                              child: const Text('Show success response'),
-                            ),
-                          ),
-                        ),
-                        ElevatedButton(
-                          onPressed: addPetFormBloc.submit,
-                          child: const Text('Continue'),
-                        ),
-                      ],
+              ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(state.failureResponse!)));
+            },
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  "Specify details of a new pet",
+                  style: AppTheme.of(context).textTheme.h6Bold,
+                ),
+                SizedBox(
+                  height: Sizes.doubleSpacing,
+                ),
+                TextFieldBlocBuilder(
+                  textFieldBloc: addPetFormBloc.petName,
+                  keyboardType: TextInputType.text,
+                  autofillHints: const [
+                    AutofillHints.name,
+                  ],
+                  decoration: const InputDecoration(
+                    labelText: 'Pet name',
+                    prefixIcon: Icon(Icons.pets),
+                  ),
+                ),
+                TextFieldBlocBuilder(
+                  textFieldBloc: addPetFormBloc.petBreed,
+                  autofillHints: const [AutofillHints.nameSuffix],
+                  decoration: const InputDecoration(
+                    labelText: 'Pet breed',
+                    prefixIcon: Icon(Icons.pets_sharp),
+                  ),
+                ),
+                SizedBox(
+                  width: 250,
+                  child: CheckboxFieldBlocBuilder(
+                    booleanFieldBloc: addPetFormBloc.showSuccessResponse,
+                    body: Container(
+                      alignment: Alignment.centerLeft,
+                      child: const Text('Show success response'),
                     ),
                   ),
                 ),
-              ),
+                ElevatedButton(
+                  onPressed: addPetFormBloc.submit,
+                  child: const Text('Continue'),
+                )
+              ],
             ),
           );
         },
