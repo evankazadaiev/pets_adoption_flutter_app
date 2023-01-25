@@ -98,11 +98,11 @@ class LightColorTheme implements AppColorTheme {
 
   //============================== Background color tokens ==============================
   @override
-  Color get backgroundSurface => Palette.green;
+  Color get backgroundSurface => Palette.violetGlaucous;
   @override
   Color get backgroundWindowBackground => Palette.appBg;
   @override
-  Color get onSurface => Palette.greenDark;
+  Color get onSurface => Palette.violetDarker;
   @override
   Color get onBackground => Colors.blueGrey;
 

@@ -74,7 +74,7 @@ class AppButtonTheme implements AppButtonsTheme {
   ButtonStyle get blankButton => sharedStyle.copyWith(
         textStyle: _getTextStyle(FontSize.runningTextSize, 0.2),
         foregroundColor: _stateColors(
-          Palette.greenDark,
+          Palette.violetDarker,
           Palette.whiteGrey,
         ),
         padding: MaterialStateProperty.all(

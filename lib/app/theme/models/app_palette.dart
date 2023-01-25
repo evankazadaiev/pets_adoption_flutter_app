@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 import '../../../core/utils/hex_color.dart';
@@ -13,8 +11,11 @@ class Palette {
   static const Color blueGrey = Colors.blueGrey;
   static final Color yellow = HexColor('#f9d162');
   static final Color orange = HexColor('#f4954e');
-  static final Color green = HexColor('#6bc7a5');
-  static final Color greenDark = HexColor('#479679');
+  static final Color green = HexColor('#4C9F70');
+  static final Color violetGlaucous = HexColor('#6279B8');
+  static final Color violetDarker = HexColor('#49516F');
+  static final Color violetLighter = HexColor('#8EA4D2');
+  static final Color greenDark = HexColor('#496F5D');
 
   static final Color fadeTextColor = HexColor('#B9BEC8');
 

@@ -17,7 +17,7 @@ class AppInputTheme implements AppInputsTheme {
         enabledBorder: OutlineInputBorder(
             gapPadding: 0,
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Palette.greenDark)),
+            borderSide: const BorderSide(color: Palette.whiteGrey)),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Palette.yellow),
           borderRadius: BorderRadius.circular(12),
@@ -28,7 +28,7 @@ class AppInputTheme implements AppInputsTheme {
           ),
         ),
         contentPadding: const EdgeInsets.all(Sizes.spacing),
-        fillColor: Palette.green,
+        fillColor: Palette.violetLighter,
         focusColor: Palette.mediumBlue,
         filled: true,
       );

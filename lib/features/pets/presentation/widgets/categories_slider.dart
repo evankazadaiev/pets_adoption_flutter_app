@@ -62,9 +62,7 @@ class CategoriesSlider extends StatelessWidget {
                               .textTheme
                               .caption4Bold
                               .copyWith(
-                                  color: AppTheme.of(ctx)
-                                      .colorTheme
-                                      .accentVariant),
+                                  color: AppTheme.of(ctx).colorTheme.accent),
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                           padding: EdgeInsets.zero),
                       onPressed: _handlePressViewAll(ctx),
@@ -136,10 +134,10 @@ class CategoryListItem extends StatelessWidget {
       height: 70,
       child: Card(
           elevation: 2,
-          color: active ? Palette.white : Palette.green,
+          color: active ? Palette.white : Palette.violetGlaucous,
           shape: RoundedRectangleBorder(
             side: BorderSide(
-                width: 1, color: active ? Palette.green : Palette.white),
+                width: 1, color: active ? Palette.violetDarker : Palette.white),
             borderRadius: BorderRadius.circular(18),
           ),
           child: InkWell(
@@ -148,7 +146,7 @@ class CategoryListItem extends StatelessWidget {
             child: Icon(
               iconType ?? Icons.pets_outlined,
               size: Sizes.iconLarge,
-              color: active ? Palette.green : Palette.white,
+              color: active ? Palette.violetDarker : Palette.white,
             ),
           )),
     );
