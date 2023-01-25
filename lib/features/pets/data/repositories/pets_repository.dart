@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:dartz/dartz.dart';
 import 'package:pets_adoption/core/domain/entities/pet.dart';
 import 'package:pets_adoption/core/domain/entities/pet_category.dart';
+import 'package:pets_adoption/core/domain/usecases/success.dart';
 import 'package:pets_adoption/core/error/exceptions.dart';
 import 'package:pets_adoption/core/error/failures.dart';
 import 'package:pets_adoption/core/network_connectivity/network_connectivity.dart';
@@ -143,5 +144,24 @@ class PetsRepository implements IPetsRepository {
     } on CacheException {
       return const Left(CacheFailure());
     }
+  }
+
+  @override
+  Future<Either<Failure, SuccessEmpty>> createPetAdvertisement(
+      {required PetModel data}) {
+    // TODO: implement createPetAdvertisement
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, SuccessEmpty>> deletePetAdvertisement(String id) {
+    // TODO: implement deletePetAdvertisement
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, SuccessEmpty>> editPetAdvertisement(String id) {
+    // TODO: implement editPetAdvertisement
+    throw UnimplementedError();
   }
 }

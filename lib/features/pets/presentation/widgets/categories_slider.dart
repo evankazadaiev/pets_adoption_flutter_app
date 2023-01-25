@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pets_adoption/app/theme/cubit/app_theme_cubit.dart';
 import 'package:pets_adoption/app/theme/models/app_palette.dart';
 import 'package:pets_adoption/core/constants/sizes.dart';
-import 'package:pets_adoption/core/enums/fetch_state.dart';
+import 'package:pets_adoption/core/domain/enums/fetch_state.dart';
 import 'package:pets_adoption/features/pets/presentation/cubits/categories_cubit.dart';
 import 'package:pets_adoption/features/pets/presentation/cubits/pets_cubit.dart';
 

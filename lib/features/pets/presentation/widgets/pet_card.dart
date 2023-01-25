@@ -19,7 +19,7 @@ class PetCard extends StatelessWidget {
         elevation: 5,
         shape: RoundedRectangleBorder(
           side: const BorderSide(
-              strokeAlign: StrokeAlign.outside,
+              strokeAlign: BorderSide.strokeAlignOutside,
               color: Colors.transparent,
               width: 1),
           borderRadius: BorderRadius.circular(18),

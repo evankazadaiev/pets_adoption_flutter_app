@@ -11,9 +11,8 @@ import '../cubits/categories_cubit.dart';
 import '../widgets/pets_sliver_grid.dart';
 
 class PetsHomeScreen extends StatelessWidget {
-  static const routeName = '/home';
-
-  const PetsHomeScreen();
+  static const String name = 'PetsHomeScreenTab';
+  static const String path = 'PetsHomeScreenTab';
 
   @override
   Widget build(BuildContext context) {

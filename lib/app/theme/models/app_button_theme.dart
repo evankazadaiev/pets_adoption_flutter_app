@@ -6,7 +6,7 @@ import 'app_palette.dart';
 abstract class AppButtonsTheme {
   // ButtonStyle get filledButton;
   //
-  // ButtonStyle get outlineButton;
+  ButtonStyle get outlineButton;
 
   ButtonStyle get blankButton;
 }
@@ -46,29 +46,29 @@ class AppButtonTheme implements AppButtonsTheme {
   //       ),
   //     );
   //
-  // @override
-  // ButtonStyle get outlineButton => sharedStyle.copyWith(
-  //       textStyle: _getTextStyle(FontSize.baseTextSize, 1),
-  //       foregroundColor: _stateColors(
-  //         Palette.cobaltBlue,
-  //         Palette.white40,
-  //       ),
-  //       minimumSize: MaterialStateProperty.all(const Size(150, 50)),
-  //       side: MaterialStateProperty.resolveWith<BorderSide>(
-  //           (Set<MaterialState> states) {
-  //         if (states.contains(MaterialState.disabled)) {
-  //           return BorderSide(
-  //             width: Sizes.baseBorder,
-  //             color: Palette.white40,
-  //           );
-  //         }
-  //
-  //         return BorderSide(
-  //           width: Sizes.baseBorder,
-  //           color: Palette.cobaltBlue,
-  //         );
-  //       }),
-  //     );
+  @override
+  ButtonStyle get outlineButton => sharedStyle.copyWith(
+        textStyle: _getTextStyle(FontSize.baseTextSize, 1),
+        foregroundColor: _stateColors(
+          Palette.navyBlue,
+          Palette.white,
+        ),
+        minimumSize: MaterialStateProperty.all(const Size(150, 50)),
+        side: MaterialStateProperty.resolveWith<BorderSide>(
+            (Set<MaterialState> states) {
+          if (states.contains(MaterialState.disabled)) {
+            return BorderSide(
+              width: Sizes.baseBorder,
+              color: Palette.navyBlue,
+            );
+          }
+
+          return BorderSide(
+            width: Sizes.baseBorder,
+            color: Palette.navyBlue,
+          );
+        }),
+      );
 
   @override
   ButtonStyle get blankButton => sharedStyle.copyWith(

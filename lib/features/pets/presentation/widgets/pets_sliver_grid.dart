@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pets_adoption/core/enums/fetch_state.dart';
+import 'package:pets_adoption/core/domain/enums/fetch_state.dart';
 import 'package:pets_adoption/features/pets/presentation/cubits/pets_cubit.dart';
 import 'package:pets_adoption/features/pets/presentation/widgets/pet_card.dart';
 

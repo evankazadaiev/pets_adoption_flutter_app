@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import "package:flutter_bloc/flutter_bloc.dart";
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:pets_adoption/core/presentation/wrappers/tabs_wrapper/tabs_wrapper.dart';
-import 'package:pets_adoption/features/pets/presentation/screens/pet_details_screen.dart';
 
+import 'app/router/app_router.dart';
 import 'app/theme/app_theme_provider_widget.dart';
 import 'app/theme/cubit/app_theme_cubit.dart';
 import 'injection.dart';
@@ -20,12 +19,10 @@ Future<void> main() async {
     storage: storage,
   );
 }
-//	#5bd2a2 main color
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return _ThemebleWidget(
@@ -61,11 +58,13 @@ class _ThemebleWidget extends StatelessWidget {
 class ThemedApp extends StatelessWidget {
   final AppTheme appTheme;
 
-  const ThemedApp({required this.appTheme});
+  ThemedApp({required this.appTheme});
+
+  final appRouter = di.get<AppRouter>();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Pets adoption',
       theme: ThemeData(
@@ -100,9 +99,9 @@ class ThemedApp extends StatelessWidget {
         // elevatedButtonTheme: ElevatedButtonThemeData(
         //   style: appTheme.buttonTheme.filledButton,
         // ),
-        // outlinedButtonTheme: OutlinedButtonThemeData(
-        //   style: appTheme.buttonTheme.outlineButton,
-        // ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: appTheme.buttonTheme.outlineButton,
+        ),
         textButtonTheme: TextButtonThemeData(
           style: appTheme.buttonTheme.blankButton,
         ),
@@ -134,11 +133,8 @@ class ThemedApp extends StatelessWidget {
           titleTextStyle: appTheme.textTheme.h5Medium,
         ),
       ),
-      home: TabsWrapper(),
-      routes: {
-        PetDetailsScreen.routeName: (_) => const PetDetailsScreen(),
-        TabsWrapper.routeName: (_) => TabsWrapper(),
-      },
+      routerDelegate: appRouter.delegate(),
+      routeInformationParser: appRouter.defaultRouteParser(),
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pets_adoption/core/domain/entities/entities.dart';
-import 'package:pets_adoption/core/enums/fetch_state.dart';
+import 'package:pets_adoption/core/domain/enums/fetch_state.dart';
 
 import '../../domain/usecases/get_categories.dart';
 

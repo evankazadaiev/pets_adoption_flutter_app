@@ -1,11 +1,13 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
-import 'package:pets_adoption/features/pets/pets.dart';
-import 'package:pets_adoption/features/search/presentation/screens/map_screen.dart';
+import 'package:pets_adoption/app/router/app_router.dart';
 
 class TabsWrapper extends StatelessWidget {
-  static const routeName = "/home-screen";
+  static const String name = 'TabsWrapper';
+  static const String path = '/TabsWrapper';
+
   TabsWrapper({Key? key}) : super(key: key);
 
   final PersistentTabController _controller =
@@ -51,73 +53,100 @@ class TabsWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PersistentTabView(
-      context,
-      controller: _controller,
-      screens: [
-        const PetsHomeScreen(),
-        MapScreen(),
-        const PetsHomeScreen(),
-        const PetsHomeScreen(),
-        const PetsHomeScreen(),
+    // return PersistentTabView(
+    //   context,
+    //   controller: _controller,
+    //   screens: [
+    //     PetsHomeScreen(),
+    //     MapScreen(),
+    //     PetsHomeScreen(),
+    //     PetsHomeScreen(),
+    //     PetsHomeScreen(),
+    //   ],
+    //   items: [
+    //     PersistentBottomNavBarItem(
+    //         icon: const Icon(CupertinoIcons.home),
+    //         title: ("Home"),
+    //         // activeColorPrimary: Theme.of(context).colorScheme.primary,
+    //         inactiveColorPrimary: Colors.grey[500]),
+    //     PersistentBottomNavBarItem(
+    //         icon: const Icon(CupertinoIcons.search),
+    //         title: ("Settings"),
+    //         // activeColorPrimary: Theme.of(context).colorScheme.primary,
+    //         inactiveColorPrimary: Colors.grey[500]),
+    //     PersistentBottomNavBarItem(
+    //         icon: const Icon(CupertinoIcons.add),
+    //         // activeColorPrimary: Theme.of(context).colorScheme.primary,
+    //         inactiveColorPrimary: Colors.grey[500]),
+    //     PersistentBottomNavBarItem(
+    //         icon: const Icon(CupertinoIcons.bell_solid),
+    //         title: ("Notifications"),
+    //         // activeColorPrimary: Theme.of(context).colorScheme.primary,
+    //         inactiveColorPrimary: Colors.grey[500]),
+    //     PersistentBottomNavBarItem(
+    //         icon: const Icon(CupertinoIcons.profile_circled),
+    //         title: ("Profile"),
+    //         // activeColorPrimary: Theme.of(context).colorScheme.primary,
+    //         inactiveColorPrimary: Colors.grey[500]),
+    //   ],
+    //   confineInSafeArea: true,
+    //   // backgroundColor:
+    //   //     Theme.of(context).colorScheme.secondary, // Default is Colors.white.
+    //   handleAndroidBackButtonPress: true, // Default is true.
+    //   resizeToAvoidBottomInset:
+    //       true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
+    //   stateManagement: true, // Default is true.
+    //   hideNavigationBarWhenKeyboardShows:
+    //       true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
+    //   decoration: const NavBarDecoration(
+    //       borderRadius: BorderRadius.only(
+    //           topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+    //       colorBehindNavBar: Colors.grey,
+    //       boxShadow: [
+    //         BoxShadow(color: Colors.black12, blurRadius: 5, spreadRadius: 1)
+    //       ]),
+    //   popAllScreensOnTapOfSelectedTab: true,
+    //   popActionScreens: PopActionScreensType.all,
+    //   itemAnimationProperties: const ItemAnimationProperties(
+    //     // Navigation Bar's items animation properties.
+    //     duration: Duration(milliseconds: 200),
+    //     curve: Curves.ease,
+    //   ),
+    //   screenTransitionAnimation: const ScreenTransitionAnimation(
+    //     // Screen transition animation on change of selected tab.
+    //     animateTabTransition: true,
+    //     curve: Curves.ease,
+    //     duration: Duration(milliseconds: 200),
+    //   ),
+    //   navBarStyle:
+    //       NavBarStyle.style1, // Choose the nav bar style with this property.
+    // );
+
+    return AutoTabsScaffold(
+      routes: const [
+        PetsHomeScreenTab(),
+        AddPetScreenTab(),
+        PetsHomeScreenTab(),
+        PetsHomeScreenTab()
       ],
-      items: [
-        PersistentBottomNavBarItem(
-            icon: const Icon(CupertinoIcons.home),
-            title: ("Home"),
-            // activeColorPrimary: Theme.of(context).colorScheme.primary,
-            inactiveColorPrimary: Colors.grey[500]),
-        PersistentBottomNavBarItem(
-            icon: const Icon(CupertinoIcons.search),
-            title: ("Settings"),
-            // activeColorPrimary: Theme.of(context).colorScheme.primary,
-            inactiveColorPrimary: Colors.grey[500]),
-        PersistentBottomNavBarItem(
-            icon: const Icon(CupertinoIcons.add),
-            // activeColorPrimary: Theme.of(context).colorScheme.primary,
-            inactiveColorPrimary: Colors.grey[500]),
-        PersistentBottomNavBarItem(
-            icon: const Icon(CupertinoIcons.bell_solid),
-            title: ("Notifications"),
-            // activeColorPrimary: Theme.of(context).colorScheme.primary,
-            inactiveColorPrimary: Colors.grey[500]),
-        PersistentBottomNavBarItem(
-            icon: const Icon(CupertinoIcons.profile_circled),
-            title: ("Profile"),
-            // activeColorPrimary: Theme.of(context).colorScheme.primary,
-            inactiveColorPrimary: Colors.grey[500]),
-      ],
-      confineInSafeArea: true,
-      // backgroundColor:
-      //     Theme.of(context).colorScheme.secondary, // Default is Colors.white.
-      handleAndroidBackButtonPress: true, // Default is true.
-      resizeToAvoidBottomInset:
-          true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
-      stateManagement: true, // Default is true.
-      hideNavigationBarWhenKeyboardShows:
-          true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
-      decoration: const NavBarDecoration(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(30), topRight: Radius.circular(30)),
-          colorBehindNavBar: Colors.grey,
-          boxShadow: [
-            BoxShadow(color: Colors.black12, blurRadius: 5, spreadRadius: 1)
-          ]),
-      popAllScreensOnTapOfSelectedTab: true,
-      popActionScreens: PopActionScreensType.all,
-      itemAnimationProperties: const ItemAnimationProperties(
-        // Navigation Bar's items animation properties.
-        duration: Duration(milliseconds: 200),
-        curve: Curves.ease,
-      ),
-      screenTransitionAnimation: const ScreenTransitionAnimation(
-        // Screen transition animation on change of selected tab.
-        animateTabTransition: true,
-        curve: Curves.ease,
-        duration: Duration(milliseconds: 200),
-      ),
-      navBarStyle:
-          NavBarStyle.style1, // Choose the nav bar style with this property.
+      bottomNavigationBuilder: (_, tabsRouter) {
+        return BottomNavigationBar(
+          currentIndex: tabsRouter.activeIndex,
+          onTap: tabsRouter.setActiveIndex,
+          items: const [
+            BottomNavigationBarItem(
+                label: 'Home', icon: Icon(CupertinoIcons.home)),
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.plus),
+              label: ("Add"),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.settings),
+              label: ("Settings"),
+            )
+          ],
+        );
+      },
     );
   }
 }
