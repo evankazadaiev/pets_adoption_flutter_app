@@ -9,8 +9,7 @@ class PetCard extends StatelessWidget {
   final String stubImage = "https://www.artistiqueacres.ca/images/cute-cat.jpg";
 
   void handleTap(context) {
-    Navigator.of(context, rootNavigator: true)
-        .pushNamed(PetDetailsScreen.routeName, arguments: pet.id);
+    PetDetailsScreen.open(context, petId: pet.id);
   }
 
   @override

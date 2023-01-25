@@ -11,16 +11,17 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'package:shared_preferences/shared_preferences.dart' as _i8;
 
 import 'app/router/app_router.dart' as _i3;
-import 'app/router/router_module.dart' as _i13;
+import 'app/router/router_module.dart' as _i14;
 import 'app/theme/cubit/app_theme_cubit.dart' as _i4;
 import 'core/network_connectivity/network_connectivity.dart' as _i6;
 import 'features/pets/data/data_sources/pets_api.dart' as _i7;
 import 'features/pets/data/data_sources/pets_cache_api.dart' as _i9;
 import 'features/pets/domain/usecases/get_pets_by_category.dart' as _i11;
 import 'features/pets/pets.dart' as _i10;
-import 'features/pets/pets_module.dart' as _i14;
+import 'features/pets/pets_module.dart' as _i15;
+import 'features/pets/presentation/cubits/pet_details_cubit.dart' as _i12;
 import 'features/pets/presentation/cubits/pets_cubit.dart'
-    as _i12; // ignore_for_file: unnecessary_lambdas
+    as _i13; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -60,7 +61,9 @@ Future<_i1.GetIt> $initGetIt(
   gh.singleton<_i10.GetPets>(petsModule.getPets(get<_i10.IPetsRepository>()));
   gh.singleton<_i11.GetPetsByCategory>(
       petsModule.getPetsByCategory(get<_i10.IPetsRepository>()));
-  gh.factory<_i12.PetsCubit>(() => petsModule.petsCubit(
+  gh.factory<_i12.PetDetailsCubit>(
+      () => petsModule.petDetailsCubit(get<_i10.GetPetDetails>()));
+  gh.factory<_i13.PetsCubit>(() => petsModule.petsCubit(
         get<_i10.GetPets>(),
         get<_i11.GetPetsByCategory>(),
       ));
@@ -69,6 +72,6 @@ Future<_i1.GetIt> $initGetIt(
   return get;
 }
 
-class _$RouterModule extends _i13.RouterModule {}
+class _$RouterModule extends _i14.RouterModule {}
 
-class _$PetsModule extends _i14.PetsModule {}
+class _$PetsModule extends _i15.PetsModule {}

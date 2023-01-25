@@ -6,6 +6,7 @@ import 'package:pets_adoption/features/pets/data/data_sources/pets_cache_api.dar
 import 'package:pets_adoption/features/pets/data/repositories/pets_repository.dart';
 import 'package:pets_adoption/features/pets/domain/usecases/get_pets_by_category.dart';
 import 'package:pets_adoption/features/pets/pets.dart';
+import 'package:pets_adoption/features/pets/presentation/cubits/pet_details_cubit.dart';
 import 'package:pets_adoption/features/pets/presentation/cubits/pets_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -91,6 +92,10 @@ abstract class PetsModule {
     return PetsCubit(getPets: getPets, getPetsByCategory: getPetsByCategory);
   }
 
-//#endregion Cubits
+  @injectable
+  PetDetailsCubit petDetailsCubit(GetPetDetails getPetDetails) {
+    return PetDetailsCubit(getPetDetails: getPetDetails);
+  }
 
+//#endregion Cubits
 }

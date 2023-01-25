@@ -1,20 +1,40 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pets_adoption/features/pets/presentation/cubits/pet_details_cubit.dart';
 import 'package:pets_adoption/features/pets/presentation/widgets/pet_scroll_view.dart';
 import 'package:pets_adoption/injection.dart';
 
+import '../../../../app/router/app_router.gr.dart';
+
 class PetDetailsScreen extends StatelessWidget {
-  static const routeName = "/pet-details-screen";
-  const PetDetailsScreen({Key? key}) : super(key: key);
+  final int petId;
+
+  const PetDetailsScreen({@PathParam('petId') required this.petId});
+
+  static const String name = 'PetDetailsScreen';
+  static const String path = '/PetDetailsScreen/:petId';
+
+  static void open(
+    BuildContext context, {
+    required int petId,
+    bool replace = false,
+  }) {
+    if (replace) {
+      context.router.replace(PetDetailsScreenRoute(petId: petId));
+    } else {
+      if (context.router.current.path != path) {
+        context.router.push(PetDetailsScreenRoute(petId: petId));
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    final petId = ModalRoute.of(context)!.settings.arguments as int;
     // final pet = BlocProvider.of<HomeScreenCubit>(context).;
 
     return BlocProvider<PetDetailsCubit>(
-      create: (_) => di(),
+      create: (_) => di.get(),
       child: Scaffold(
         body: PetScreenBody(
           petId: petId,

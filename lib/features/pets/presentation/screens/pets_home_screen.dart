@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pets_adoption/features/pets/presentation/cubits/pets_cubit.dart';
@@ -13,6 +14,19 @@ import '../widgets/pets_sliver_grid.dart';
 class PetsHomeScreen extends StatelessWidget {
   static const String name = 'PetsHomeScreenTab';
   static const String path = 'PetsHomeScreenTab';
+
+  static void open(
+    BuildContext context, {
+    bool replace = false,
+  }) {
+    if (replace) {
+      context.router.replaceNamed(path);
+    } else {
+      if (context.router.current.path != path) {
+        context.router.pushNamed(path);
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
