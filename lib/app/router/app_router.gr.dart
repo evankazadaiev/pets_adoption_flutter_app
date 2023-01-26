@@ -11,23 +11,29 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i3;
-import 'package:flutter/cupertino.dart' as _i5;
-import 'package:flutter/material.dart' as _i4;
+import 'package:auto_route/auto_route.dart' as _i6;
+import 'package:flutter/cupertino.dart' as _i8;
+import 'package:flutter/material.dart' as _i7;
 
 import '../../core/presentation/wrappers/tabs_wrapper/tabs_wrapper.dart' as _i1;
 import '../../features/pets/pets.dart' as _i2;
+import '../../features/pets/presentation/screens/add_anthropometry_details_form.dart'
+    as _i5;
+import '../../features/pets/presentation/screens/add_category_details_form.dart'
+    as _i3;
+import '../../features/pets/presentation/screens/add_name_breed_details_form.dart'
+    as _i4;
 
-class AppRouter extends _i3.RootStackRouter {
-  AppRouter([_i4.GlobalKey<_i4.NavigatorState>? navigatorKey])
+class AppRouter extends _i6.RootStackRouter {
+  AppRouter([_i7.GlobalKey<_i7.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i3.PageFactory> pagesMap = {
+  final Map<String, _i6.PageFactory> pagesMap = {
     TabsWrapperRoute.name: (routeData) {
       final args = routeData.argsAs<TabsWrapperRouteArgs>(
           orElse: () => const TabsWrapperRouteArgs());
-      return _i3.MaterialPageX<dynamic>(
+      return _i6.MaterialPageX<dynamic>(
         routeData: routeData,
         child: _i1.TabsWrapper(key: args.key),
       );
@@ -37,57 +43,92 @@ class AppRouter extends _i3.RootStackRouter {
       final args = routeData.argsAs<PetDetailsScreenRouteArgs>(
           orElse: () =>
               PetDetailsScreenRouteArgs(petId: pathParams.getInt('petId')));
-      return _i3.MaterialPageX<dynamic>(
+      return _i6.MaterialPageX<dynamic>(
         routeData: routeData,
         child: _i2.PetDetailsScreen(petId: args.petId),
       );
     },
-    PetsHomeScreenTab.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+    PetsHomeScreenRoute.name: (routeData) {
+      return _i6.MaterialPageX<dynamic>(
         routeData: routeData,
         child: _i2.PetsHomeScreen(),
       );
     },
-    AddPetScreenTab.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+    AddPetScreenRoute.name: (routeData) {
+      return _i6.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i2.AddPetScreen(),
+      );
+    },
+    AddCategoryDetailsFormRoute.name: (routeData) {
+      return _i6.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: _i3.AddCategoryDetailsForm(),
+      );
+    },
+    AddNameBreedDetailsFormRoute.name: (routeData) {
+      return _i6.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: _i4.AddNameBreedDetailsForm(),
+      );
+    },
+    AddAnthropometryDetailsFormRoute.name: (routeData) {
+      return _i6.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: _i5.AddAnthropometryDetailsForm(),
       );
     },
   };
 
   @override
-  List<_i3.RouteConfig> get routes => [
-        _i3.RouteConfig(
+  List<_i6.RouteConfig> get routes => [
+        _i6.RouteConfig(
           '/#redirect',
           path: '/',
-          redirectTo: 'tabs/:id',
+          redirectTo: '/TabsWrapper/:id',
           fullMatch: true,
         ),
-        _i3.RouteConfig(
+        _i6.RouteConfig(
           TabsWrapperRoute.name,
-          path: 'tabs/:id',
+          path: '/TabsWrapper/:id',
           children: [
-            _i3.RouteConfig(
-              '#redirect',
-              path: '',
-              parent: TabsWrapperRoute.name,
-              redirectTo: 'PetsHomeScreenTab',
-              fullMatch: true,
-            ),
-            _i3.RouteConfig(
-              PetsHomeScreenTab.name,
+            _i6.RouteConfig(
+              PetsHomeScreenRoute.name,
               path: 'PetsHomeScreenTab',
               parent: TabsWrapperRoute.name,
             ),
-            _i3.RouteConfig(
-              AddPetScreenTab.name,
+            _i6.RouteConfig(
+              AddPetScreenRoute.name,
               path: 'AddPetScreenTab',
               parent: TabsWrapperRoute.name,
+              children: [
+                _i6.RouteConfig(
+                  '#redirect',
+                  path: '',
+                  parent: AddPetScreenRoute.name,
+                  redirectTo: 'AddCategoryDetailsForm',
+                  fullMatch: true,
+                ),
+                _i6.RouteConfig(
+                  AddCategoryDetailsFormRoute.name,
+                  path: 'AddCategoryDetailsForm',
+                  parent: AddPetScreenRoute.name,
+                ),
+                _i6.RouteConfig(
+                  AddNameBreedDetailsFormRoute.name,
+                  path: 'AddNameBreedDetailsForm',
+                  parent: AddPetScreenRoute.name,
+                ),
+                _i6.RouteConfig(
+                  AddAnthropometryDetailsFormRoute.name,
+                  path: 'AddAnthropometryDetailsForm',
+                  parent: AddPetScreenRoute.name,
+                ),
+              ],
             ),
           ],
         ),
-        _i3.RouteConfig(
+        _i6.RouteConfig(
           PetDetailsScreenRoute.name,
           path: '/PetDetailsScreen/:petId',
         ),
@@ -96,13 +137,13 @@ class AppRouter extends _i3.RootStackRouter {
 
 /// generated route for
 /// [_i1.TabsWrapper]
-class TabsWrapperRoute extends _i3.PageRouteInfo<TabsWrapperRouteArgs> {
+class TabsWrapperRoute extends _i6.PageRouteInfo<TabsWrapperRouteArgs> {
   TabsWrapperRoute({
-    _i5.Key? key,
-    List<_i3.PageRouteInfo>? children,
+    _i8.Key? key,
+    List<_i6.PageRouteInfo>? children,
   }) : super(
           TabsWrapperRoute.name,
-          path: 'tabs/:id',
+          path: '/TabsWrapper/:id',
           args: TabsWrapperRouteArgs(key: key),
           initialChildren: children,
         );
@@ -113,7 +154,7 @@ class TabsWrapperRoute extends _i3.PageRouteInfo<TabsWrapperRouteArgs> {
 class TabsWrapperRouteArgs {
   const TabsWrapperRouteArgs({this.key});
 
-  final _i5.Key? key;
+  final _i8.Key? key;
 
   @override
   String toString() {
@@ -124,7 +165,7 @@ class TabsWrapperRouteArgs {
 /// generated route for
 /// [_i2.PetDetailsScreen]
 class PetDetailsScreenRoute
-    extends _i3.PageRouteInfo<PetDetailsScreenRouteArgs> {
+    extends _i6.PageRouteInfo<PetDetailsScreenRouteArgs> {
   PetDetailsScreenRoute({required int petId})
       : super(
           PetDetailsScreenRoute.name,
@@ -149,24 +190,61 @@ class PetDetailsScreenRouteArgs {
 
 /// generated route for
 /// [_i2.PetsHomeScreen]
-class PetsHomeScreenTab extends _i3.PageRouteInfo<void> {
-  const PetsHomeScreenTab()
+class PetsHomeScreenRoute extends _i6.PageRouteInfo<void> {
+  const PetsHomeScreenRoute()
       : super(
-          PetsHomeScreenTab.name,
+          PetsHomeScreenRoute.name,
           path: 'PetsHomeScreenTab',
         );
 
-  static const String name = 'PetsHomeScreenTab';
+  static const String name = 'PetsHomeScreenRoute';
 }
 
 /// generated route for
 /// [_i2.AddPetScreen]
-class AddPetScreenTab extends _i3.PageRouteInfo<void> {
-  const AddPetScreenTab()
+class AddPetScreenRoute extends _i6.PageRouteInfo<void> {
+  const AddPetScreenRoute({List<_i6.PageRouteInfo>? children})
       : super(
-          AddPetScreenTab.name,
+          AddPetScreenRoute.name,
           path: 'AddPetScreenTab',
+          initialChildren: children,
         );
 
-  static const String name = 'AddPetScreenTab';
+  static const String name = 'AddPetScreenRoute';
+}
+
+/// generated route for
+/// [_i3.AddCategoryDetailsForm]
+class AddCategoryDetailsFormRoute extends _i6.PageRouteInfo<void> {
+  const AddCategoryDetailsFormRoute()
+      : super(
+          AddCategoryDetailsFormRoute.name,
+          path: 'AddCategoryDetailsForm',
+        );
+
+  static const String name = 'AddCategoryDetailsFormRoute';
+}
+
+/// generated route for
+/// [_i4.AddNameBreedDetailsForm]
+class AddNameBreedDetailsFormRoute extends _i6.PageRouteInfo<void> {
+  const AddNameBreedDetailsFormRoute()
+      : super(
+          AddNameBreedDetailsFormRoute.name,
+          path: 'AddNameBreedDetailsForm',
+        );
+
+  static const String name = 'AddNameBreedDetailsFormRoute';
+}
+
+/// generated route for
+/// [_i5.AddAnthropometryDetailsForm]
+class AddAnthropometryDetailsFormRoute extends _i6.PageRouteInfo<void> {
+  const AddAnthropometryDetailsFormRoute()
+      : super(
+          AddAnthropometryDetailsFormRoute.name,
+          path: 'AddAnthropometryDetailsForm',
+        );
+
+  static const String name = 'AddAnthropometryDetailsFormRoute';
 }

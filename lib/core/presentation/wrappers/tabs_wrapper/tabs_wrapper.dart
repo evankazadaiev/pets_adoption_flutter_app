@@ -5,8 +5,7 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:pets_adoption/app/router/app_router.dart';
 
 class TabsWrapper extends StatelessWidget {
-  static const String name = 'TabsWrapper';
-  static const String path = '/TabsWrapper';
+  static const String path = '/TabsWrapper/:id';
 
   TabsWrapper({Key? key}) : super(key: key);
 
@@ -124,10 +123,10 @@ class TabsWrapper extends StatelessWidget {
 
     return AutoTabsScaffold(
       routes: const [
-        PetsHomeScreenTab(),
-        AddPetScreenTab(),
-        PetsHomeScreenTab(),
-        PetsHomeScreenTab()
+        PetsHomeScreenRoute(),
+        AddPetScreenRoute(),
+        PetsHomeScreenRoute(),
+        PetsHomeScreenRoute()
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
         return BottomNavigationBar(

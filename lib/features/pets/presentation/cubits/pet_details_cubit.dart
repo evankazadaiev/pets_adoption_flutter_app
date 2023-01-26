@@ -31,8 +31,9 @@ class PetDetailsCubit extends Cubit<PetDetailsState> {
     // }
     res.fold(
       (failure) => emit(const PetDetailsState.failed()),
-      (details) =>
-          emit(PetDetailsState.done(petDetails: details)),
+      (details) => emit(PetDetailsState.done(petDetails: details)),
     );
   }
+
+  reset() => emit(const PetDetailsState.initial());
 }
