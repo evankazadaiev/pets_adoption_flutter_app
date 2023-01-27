@@ -21,7 +21,7 @@ class PetDetailsCubit extends Cubit<PetDetailsState> {
   PetDetailsCubit({required this.getPetDetails})
       : super(const PetDetailsState.initial());
 
-  fetchAnimalDetails(int petId) async {
+  fetchAnimalDetails(String petId) async {
     emit(const PetDetailsState.processing());
     await Future.delayed(const Duration(seconds: 3));
     final res = await getPetDetails.execute(petId);

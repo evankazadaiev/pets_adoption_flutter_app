@@ -8,7 +8,7 @@ part 'pet.g.dart';
 @freezed
 class PetModel with _$PetModel {
   const factory PetModel(
-      {required int id,
+      {required String id,
       required String categoryId,
       required String name,
       required String breedName,

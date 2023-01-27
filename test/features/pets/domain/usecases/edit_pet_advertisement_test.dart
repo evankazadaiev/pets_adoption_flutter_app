@@ -9,11 +9,11 @@ class MockPetsRepository extends Mock implements IPetsRepository {}
 
 void main() {
   late MockPetsRepository mockAdvertisementRepository;
-  late EditAdvertisement usecase;
+  late EditPetAdvertisement usecase;
 
   setUp(() {
     mockAdvertisementRepository = MockPetsRepository();
-    usecase = EditAdvertisement(mockAdvertisementRepository);
+    usecase = EditPetAdvertisement(mockAdvertisementRepository);
   });
 
   group("EditAdvertisement", () {

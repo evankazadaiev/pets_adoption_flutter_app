@@ -11,6 +11,6 @@ class GetPetDetails {
 
   GetPetDetails(this.repository);
 
-  Future<Either<Failure, PetModel>> execute(int id) =>
+  Future<Either<Failure, PetModel>> execute(String id) =>
       repository.getPetDetails(id);
 }

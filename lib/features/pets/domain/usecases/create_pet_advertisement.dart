@@ -5,11 +5,11 @@ import 'package:pets_adoption/core/domain/usecases/success.dart';
 import 'package:pets_adoption/core/error/failures.dart';
 import 'package:pets_adoption/features/pets/domain/repositories/pets_repository_interface.dart';
 
-class CreateAdvertisement {
+class CreatePetAdvertisement {
   @protected
   final IPetsRepository repository;
 
-  CreateAdvertisement(this.repository);
+  CreatePetAdvertisement(this.repository);
 
   Future<Either<Failure, SuccessEmpty>> execute(PetModel data) =>
       repository.createPetAdvertisement(data: data);

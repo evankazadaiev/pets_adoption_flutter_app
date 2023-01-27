@@ -13,7 +13,6 @@ import '../cubits/categories_cubit.dart';
 import '../widgets/pets_sliver_grid.dart';
 
 class PetsHomeScreen extends StatelessWidget {
-  static const String name = 'PetsHomeScreenTab';
   static const String path = 'PetsHomeScreenTab';
 
   static void open(

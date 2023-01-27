@@ -8,7 +8,7 @@ import 'package:pets_adoption/injection.dart';
 import '../../../../app/router/app_router.gr.dart';
 
 class PetDetailsScreen extends StatelessWidget {
-  final int petId;
+  final String petId;
 
   const PetDetailsScreen({@PathParam('petId') required this.petId});
 
@@ -17,7 +17,7 @@ class PetDetailsScreen extends StatelessWidget {
 
   static void open(
     BuildContext context, {
-    required int petId,
+    required String petId,
     bool replace = false,
   }) {
     if (replace) {
@@ -64,7 +64,7 @@ class PetDetailsScreen extends StatelessWidget {
 }
 
 class PetScreenBody extends StatefulWidget {
-  final int petId;
+  final String petId;
   const PetScreenBody({Key? key, required this.petId}) : super(key: key);
 
   @override

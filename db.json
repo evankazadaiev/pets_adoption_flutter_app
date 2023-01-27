@@ -1,7 +1,7 @@
 {
   "pets": [
     {
-      "id": 1,
+      "id": "1",
       "categoryId": "cats",
       "name": "Candy",
       "breedName": "Metis cat",
@@ -28,7 +28,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "categoryId": "dogs",
       "name": "Seed",
       "breedName": "Corgi",
@@ -54,9 +54,8 @@
         }
       ]
     },
-
     {
-      "id": 3,
+      "id": "3",
       "categoryId": "dogs",
       "name": "Jack",
       "breedName": "Сollie",
@@ -82,9 +81,8 @@
         }
       ]
     },
-
     {
-      "id": 4,
+      "id": "4",
       "categoryId": "dogs",
       "name": "Honey",
       "breedName": "Jack Russell",
@@ -111,7 +109,7 @@
       ]
     },
     {
-      "id": 5,
+      "id": "5",
       "categoryId": "cats",
       "name": "Fish Hunter",
       "breedName": "Britain cat",
@@ -134,6 +132,29 @@
         {
           "label": "Age",
           "value": "2 Years"
+        }
+      ]
+    },
+    {
+      "id": "SLDzh-a",
+      "categoryId": "Option 1",
+      "name": "Leya",
+      "breedName": "Buldog",
+      "isFavorite": false,
+      "imageUrl": "https://t4.ftcdn.net/jpg/00/95/00/55/360_F_95005565_u8gLZrJFXV1t9Qw0Y0N1nSVI8Vl2wCMg.jpg",
+      "description": "Super cool dog. Very cute and tidy, clean and smiley",
+      "anthropometry": [
+        {
+          "label": "Sex",
+          "value": "Male"
+        },
+        {
+          "label": "Weight",
+          "value": "12"
+        },
+        {
+          "label": "Age",
+          "value": "12"
         }
       ]
     }

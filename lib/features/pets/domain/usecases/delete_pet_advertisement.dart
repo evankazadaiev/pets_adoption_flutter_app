@@ -5,11 +5,11 @@ import 'package:pets_adoption/core/error/failures.dart';
 
 import '../repositories/pets_repository_interface.dart';
 
-class DeleteAdvertisement {
+class DeletePetAdvertisement {
   @protected
   final IPetsRepository repository;
 
-  DeleteAdvertisement(this.repository);
+  DeletePetAdvertisement(this.repository);
 
   Future<Either<Failure, SuccessEmpty>> execute(String id) =>
       repository.deletePetAdvertisement(id);

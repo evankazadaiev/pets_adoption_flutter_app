@@ -12,7 +12,6 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i6;
-import 'package:flutter/cupertino.dart' as _i8;
 import 'package:flutter/material.dart' as _i7;
 
 import '../../core/presentation/wrappers/tabs_wrapper/tabs_wrapper.dart' as _i1;
@@ -31,18 +30,16 @@ class AppRouter extends _i6.RootStackRouter {
   @override
   final Map<String, _i6.PageFactory> pagesMap = {
     TabsWrapperRoute.name: (routeData) {
-      final args = routeData.argsAs<TabsWrapperRouteArgs>(
-          orElse: () => const TabsWrapperRouteArgs());
       return _i6.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i1.TabsWrapper(key: args.key),
+        child: _i1.TabsWrapper(),
       );
     },
     PetDetailsScreenRoute.name: (routeData) {
       final pathParams = routeData.inheritedPathParams;
       final args = routeData.argsAs<PetDetailsScreenRouteArgs>(
           orElse: () =>
-              PetDetailsScreenRouteArgs(petId: pathParams.getInt('petId')));
+              PetDetailsScreenRouteArgs(petId: pathParams.getString('petId')));
       return _i6.MaterialPageX<dynamic>(
         routeData: routeData,
         child: _i2.PetDetailsScreen(petId: args.petId),
@@ -99,7 +96,7 @@ class AppRouter extends _i6.RootStackRouter {
             ),
             _i6.RouteConfig(
               AddPetScreenRoute.name,
-              path: 'AddPetScreenTab',
+              path: 'AddPetScreenTab/:form',
               parent: TabsWrapperRoute.name,
               children: [
                 _i6.RouteConfig(
@@ -137,36 +134,22 @@ class AppRouter extends _i6.RootStackRouter {
 
 /// generated route for
 /// [_i1.TabsWrapper]
-class TabsWrapperRoute extends _i6.PageRouteInfo<TabsWrapperRouteArgs> {
-  TabsWrapperRoute({
-    _i8.Key? key,
-    List<_i6.PageRouteInfo>? children,
-  }) : super(
+class TabsWrapperRoute extends _i6.PageRouteInfo<void> {
+  const TabsWrapperRoute({List<_i6.PageRouteInfo>? children})
+      : super(
           TabsWrapperRoute.name,
           path: '/TabsWrapper/:id',
-          args: TabsWrapperRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'TabsWrapperRoute';
 }
 
-class TabsWrapperRouteArgs {
-  const TabsWrapperRouteArgs({this.key});
-
-  final _i8.Key? key;
-
-  @override
-  String toString() {
-    return 'TabsWrapperRouteArgs{key: $key}';
-  }
-}
-
 /// generated route for
 /// [_i2.PetDetailsScreen]
 class PetDetailsScreenRoute
     extends _i6.PageRouteInfo<PetDetailsScreenRouteArgs> {
-  PetDetailsScreenRoute({required int petId})
+  PetDetailsScreenRoute({required String petId})
       : super(
           PetDetailsScreenRoute.name,
           path: '/PetDetailsScreen/:petId',
@@ -180,7 +163,7 @@ class PetDetailsScreenRoute
 class PetDetailsScreenRouteArgs {
   const PetDetailsScreenRouteArgs({required this.petId});
 
-  final int petId;
+  final String petId;
 
   @override
   String toString() {
@@ -206,7 +189,7 @@ class AddPetScreenRoute extends _i6.PageRouteInfo<void> {
   const AddPetScreenRoute({List<_i6.PageRouteInfo>? children})
       : super(
           AddPetScreenRoute.name,
-          path: 'AddPetScreenTab',
+          path: 'AddPetScreenTab/:form',
           initialChildren: children,
         );
 

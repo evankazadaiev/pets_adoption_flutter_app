@@ -7,7 +7,7 @@ part of 'pet.dart';
 // **************************************************************************
 
 _$_PetModel _$$_PetModelFromJson(Map<String, dynamic> json) => _$_PetModel(
-      id: json['id'] as int,
+      id: json['id'] as String,
       categoryId: json['categoryId'] as String,
       name: json['name'] as String,
       breedName: json['breedName'] as String,

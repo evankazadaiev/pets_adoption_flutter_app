@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pets_adoption/core/presentation/templates/form_template.dart';
 
 import '../../../../injection.dart';
 import '../cubits/new_pet_cubit.dart';
@@ -9,7 +8,7 @@ import '../cubits/new_pet_cubit.dart';
 class AddPetScreen extends StatelessWidget {
   const AddPetScreen({Key? key}) : super(key: key);
 
-  static const String path = 'AddPetScreenTab';
+  static const String path = 'AddPetScreenTab/:form';
 
   static void open(
     BuildContext context, {
@@ -24,13 +23,15 @@ class AddPetScreen extends StatelessWidget {
     }
   }
 
+  static void goBack(BuildContext context) {
+    context.navigateNamedTo(path);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return FormTemplate(
-      content: BlocProvider<NewPetCubit>(
-        create: (_) => di.get(),
-        child: const AutoRouter(),
-      ),
+    return BlocProvider<NewPetCubit>(
+      create: (_) => di.get(),
+      child: const AutoRouter(),
     );
   }
 }

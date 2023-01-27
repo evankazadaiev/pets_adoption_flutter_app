@@ -16,13 +16,14 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NewPetState {
-  String? get petName => throw _privateConstructorUsedError;
-  String? get petBreed => throw _privateConstructorUsedError;
-  String? get sex => throw _privateConstructorUsedError;
-  String? get category => throw _privateConstructorUsedError;
+  String get petName => throw _privateConstructorUsedError;
+  String get petBreed => throw _privateConstructorUsedError;
+  String get sex => throw _privateConstructorUsedError;
+  String get category => throw _privateConstructorUsedError;
+  String get imageUrl => throw _privateConstructorUsedError;
   int? get weight => throw _privateConstructorUsedError;
   int? get age => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   FetchState get fetchState => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -37,13 +38,14 @@ abstract class $NewPetStateCopyWith<$Res> {
       _$NewPetStateCopyWithImpl<$Res, NewPetState>;
   @useResult
   $Res call(
-      {String? petName,
-      String? petBreed,
-      String? sex,
-      String? category,
+      {String petName,
+      String petBreed,
+      String sex,
+      String category,
+      String imageUrl,
       int? weight,
       int? age,
-      String? description,
+      String description,
       FetchState fetchState});
 }
 
@@ -60,32 +62,37 @@ class _$NewPetStateCopyWithImpl<$Res, $Val extends NewPetState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? petName = freezed,
-    Object? petBreed = freezed,
-    Object? sex = freezed,
-    Object? category = freezed,
+    Object? petName = null,
+    Object? petBreed = null,
+    Object? sex = null,
+    Object? category = null,
+    Object? imageUrl = null,
     Object? weight = freezed,
     Object? age = freezed,
-    Object? description = freezed,
+    Object? description = null,
     Object? fetchState = null,
   }) {
     return _then(_value.copyWith(
-      petName: freezed == petName
+      petName: null == petName
           ? _value.petName
           : petName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      petBreed: freezed == petBreed
+              as String,
+      petBreed: null == petBreed
           ? _value.petBreed
           : petBreed // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sex: freezed == sex
+              as String,
+      sex: null == sex
           ? _value.sex
           : sex // ignore: cast_nullable_to_non_nullable
-              as String?,
-      category: freezed == category
+              as String,
+      category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
       weight: freezed == weight
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
@@ -94,10 +101,10 @@ class _$NewPetStateCopyWithImpl<$Res, $Val extends NewPetState>
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as int?,
-      description: freezed == description
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       fetchState: null == fetchState
           ? _value.fetchState
           : fetchState // ignore: cast_nullable_to_non_nullable
@@ -115,13 +122,14 @@ abstract class _$$_NewPetStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? petName,
-      String? petBreed,
-      String? sex,
-      String? category,
+      {String petName,
+      String petBreed,
+      String sex,
+      String category,
+      String imageUrl,
       int? weight,
       int? age,
-      String? description,
+      String description,
       FetchState fetchState});
 }
 
@@ -136,32 +144,37 @@ class __$$_NewPetStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? petName = freezed,
-    Object? petBreed = freezed,
-    Object? sex = freezed,
-    Object? category = freezed,
+    Object? petName = null,
+    Object? petBreed = null,
+    Object? sex = null,
+    Object? category = null,
+    Object? imageUrl = null,
     Object? weight = freezed,
     Object? age = freezed,
-    Object? description = freezed,
+    Object? description = null,
     Object? fetchState = null,
   }) {
     return _then(_$_NewPetState(
-      petName: freezed == petName
+      petName: null == petName
           ? _value.petName
           : petName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      petBreed: freezed == petBreed
+              as String,
+      petBreed: null == petBreed
           ? _value.petBreed
           : petBreed // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sex: freezed == sex
+              as String,
+      sex: null == sex
           ? _value.sex
           : sex // ignore: cast_nullable_to_non_nullable
-              as String?,
-      category: freezed == category
+              as String,
+      category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
       weight: freezed == weight
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
@@ -170,10 +183,10 @@ class __$$_NewPetStateCopyWithImpl<$Res>
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as int?,
-      description: freezed == description
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       fetchState: null == fetchState
           ? _value.fetchState
           : fetchState // ignore: cast_nullable_to_non_nullable
@@ -190,23 +203,27 @@ class _$_NewPetState implements _NewPetState {
       this.petBreed = '',
       this.sex = '',
       this.category = '',
-      this.weight = null,
-      this.age = null,
+      this.imageUrl = '',
+      this.weight = 0,
+      this.age = 0,
       this.description = '',
       this.fetchState = FetchState.initial});
 
   @override
   @JsonKey()
-  final String? petName;
+  final String petName;
   @override
   @JsonKey()
-  final String? petBreed;
+  final String petBreed;
   @override
   @JsonKey()
-  final String? sex;
+  final String sex;
   @override
   @JsonKey()
-  final String? category;
+  final String category;
+  @override
+  @JsonKey()
+  final String imageUrl;
   @override
   @JsonKey()
   final int? weight;
@@ -215,14 +232,14 @@ class _$_NewPetState implements _NewPetState {
   final int? age;
   @override
   @JsonKey()
-  final String? description;
+  final String description;
   @override
   @JsonKey()
   final FetchState fetchState;
 
   @override
   String toString() {
-    return 'NewPetState(petName: $petName, petBreed: $petBreed, sex: $sex, category: $category, weight: $weight, age: $age, description: $description, fetchState: $fetchState)';
+    return 'NewPetState(petName: $petName, petBreed: $petBreed, sex: $sex, category: $category, imageUrl: $imageUrl, weight: $weight, age: $age, description: $description, fetchState: $fetchState)';
   }
 
   @override
@@ -236,6 +253,8 @@ class _$_NewPetState implements _NewPetState {
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.category, category) ||
                 other.category == category) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
             (identical(other.weight, weight) || other.weight == weight) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.description, description) ||
@@ -246,7 +265,7 @@ class _$_NewPetState implements _NewPetState {
 
   @override
   int get hashCode => Object.hash(runtimeType, petName, petBreed, sex, category,
-      weight, age, description, fetchState);
+      imageUrl, weight, age, description, fetchState);
 
   @JsonKey(ignore: true)
   @override
@@ -257,29 +276,32 @@ class _$_NewPetState implements _NewPetState {
 
 abstract class _NewPetState implements NewPetState {
   const factory _NewPetState(
-      {final String? petName,
-      final String? petBreed,
-      final String? sex,
-      final String? category,
+      {final String petName,
+      final String petBreed,
+      final String sex,
+      final String category,
+      final String imageUrl,
       final int? weight,
       final int? age,
-      final String? description,
+      final String description,
       final FetchState fetchState}) = _$_NewPetState;
 
   @override
-  String? get petName;
+  String get petName;
   @override
-  String? get petBreed;
+  String get petBreed;
   @override
-  String? get sex;
+  String get sex;
   @override
-  String? get category;
+  String get category;
+  @override
+  String get imageUrl;
   @override
   int? get weight;
   @override
   int? get age;
   @override
-  String? get description;
+  String get description;
   @override
   FetchState get fetchState;
   @override

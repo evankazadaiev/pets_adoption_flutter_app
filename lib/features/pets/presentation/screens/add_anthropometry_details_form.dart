@@ -1,13 +1,21 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-import 'package:pets_adoption/app/theme/cubit/app_theme_cubit.dart';
+import 'package:pets_adoption/app/router/app_router.gr.dart';
 import 'package:pets_adoption/core/constants/sizes.dart';
+import 'package:pets_adoption/core/presentation/templates/form_template.dart';
+import 'package:pets_adoption/core/presentation/widgets/input_bloc_field.dart';
 import 'package:pets_adoption/features/pets/presentation/cubits/new_pet_cubit.dart';
-
-import '../../../../core/presentation/widgets/input_bloc_field.dart';
+import 'package:pets_adoption/features/pets/presentation/screens/pets_home_screen.dart';
+import 'package:pets_adoption/features/pets/presentation/widgets/pet_photo_upload.dart';
 
 class AddAnthropometryDetailsFormBloc extends FormBloc<String, String> {
+  final photo = TextFieldBloc(
+    validators: [
+      FieldBlocValidators.required,
+    ],
+  );
+
   final weight = TextFieldBloc(
     validators: [
       FieldBlocValidators.required,
@@ -28,7 +36,7 @@ class AddAnthropometryDetailsFormBloc extends FormBloc<String, String> {
 
   AddAnthropometryDetailsFormBloc() {
     addFieldBlocs(
-      fieldBlocs: [weight, age, description],
+      fieldBlocs: [photo, weight, age, description],
     );
   }
 
@@ -56,91 +64,92 @@ class AddAnthropometryDetailsForm extends StatelessWidget {
     }
   }
 
-  _onSuccessHandler(BuildContext ctx, _) {
+  _onSuccessHandler(BuildContext ctx, _) async {
     final addAnthropometryDetailsBloc =
         ctx.read<AddAnthropometryDetailsFormBloc>();
 
     ctx.read<NewPetCubit>().submitAnthropometry(
+        // imageUrl: addAnthropometryDetailsBloc.photo.value,
+        imageUrl:
+            "https://t4.ftcdn.net/jpg/00/95/00/55/360_F_95005565_u8gLZrJFXV1t9Qw0Y0N1nSVI8Vl2wCMg.jpg",
         age: addAnthropometryDetailsBloc.age.valueToInt!,
         weight: addAnthropometryDetailsBloc.weight.valueToInt!,
         description: addAnthropometryDetailsBloc.description.value);
+
+    await ctx.read<NewPetCubit>().createNewPetAdvertisement();
+
+    if (ctx.mounted) {
+      ctx.router.pushAndPopUntil(const AddCategoryDetailsFormRoute(),
+          predicate: (_) => false);
+
+      ctx.router.root.navigateNamed(PetsHomeScreen.path);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => AddAnthropometryDetailsFormBloc(),
-      child: Builder(
-        builder: (context) {
-          final addAnthropometryDetailsBloc =
-              context.read<AddAnthropometryDetailsFormBloc>();
+    return FormTemplate(
+      showPicture: false,
+      content: BlocProvider(
+        create: (_) => AddAnthropometryDetailsFormBloc(),
+        child: Builder(
+          builder: (context) {
+            final addAnthropometryDetailsBloc =
+                context.read<AddAnthropometryDetailsFormBloc>();
 
-          return FormBlocListener<AddAnthropometryDetailsFormBloc, String,
-              String>(
-            onSubmitting: (context, state) {
-              // LoadingDialog.show(context);
-            },
-            onSubmissionFailed: (context, state) {
-              // LoadingDialog.hide(context);
-            },
-            onSuccess: _onSuccessHandler,
-            onFailure: (context, state) {
-              // LoadingDialog.hide(context);
-
-              ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text(state.failureResponse!)));
-            },
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  "Specify details of a new pet",
-                  style: AppTheme.of(context).textTheme.h6Bold,
-                ),
-                SizedBox(
-                  height: Sizes.doubleSpacing,
-                ),
-                InputBlocField(
-                    textFieldBloc: addAnthropometryDetailsBloc.weight,
-                    labelText: 'Weight',
-                    keyboardType:
-                        const TextInputType.numberWithOptions(decimal: true),
-                    prefixIcon: Icons.pets,
-                    suffixText: 'Kg'),
-                InputBlocField(
-                    textFieldBloc: addAnthropometryDetailsBloc.age,
-                    labelText: 'Age',
-                    keyboardType:
-                        const TextInputType.numberWithOptions(decimal: true),
-                    prefixIcon: Icons.pets,
-                    suffixText: 'Months'),
-                InputBlocField(
-                    textFieldBloc: addAnthropometryDetailsBloc.description,
-                    labelText: 'Description',
-                    keyboardType: TextInputType.text,
-                    prefixIcon: Icons.description,
-                    suffixText: 'Details'),
-                Row(
-                  children: [
-                    const SizedBox(
-                      width: 50,
-                    ),
-                    Expanded(
-                      flex: 3,
-                      child: ElevatedButton(
-                        onPressed: addAnthropometryDetailsBloc.submit,
-                        child: const Text('Continue'),
+            return FormBlocListener<AddAnthropometryDetailsFormBloc, String,
+                String>(
+              onSuccess: _onSuccessHandler,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(
+                    height: Sizes.doubleSpacing,
+                  ),
+                  PetPhotoUpload(
+                      textFieldBloc: addAnthropometryDetailsBloc.photo),
+                  InputBlocField(
+                      textFieldBloc: addAnthropometryDetailsBloc.weight,
+                      labelText: 'Weight',
+                      keyboardType:
+                          const TextInputType.numberWithOptions(decimal: true),
+                      prefixIcon: Icons.pets,
+                      suffixText: 'Kg'),
+                  InputBlocField(
+                      textFieldBloc: addAnthropometryDetailsBloc.age,
+                      labelText: 'Age',
+                      keyboardType:
+                          const TextInputType.numberWithOptions(decimal: true),
+                      prefixIcon: Icons.pets,
+                      suffixText: 'Months'),
+                  InputBlocField(
+                      textFieldBloc: addAnthropometryDetailsBloc.description,
+                      labelText: 'Description',
+                      keyboardType: TextInputType.text,
+                      prefixIcon: Icons.description,
+                      suffixText: 'Details'),
+                  Row(
+                    children: [
+                      const SizedBox(
+                        width: 50,
                       ),
-                    ),
-                    const SizedBox(
-                      width: 50,
-                    ),
-                  ],
-                )
-              ],
-            ),
-          );
-        },
+                      Expanded(
+                        flex: 3,
+                        child: ElevatedButton(
+                          onPressed: addAnthropometryDetailsBloc.submit,
+                          child: const Text('Continue'),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 50,
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }

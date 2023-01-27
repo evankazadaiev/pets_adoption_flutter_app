@@ -17,8 +17,12 @@ class $AssetsImagesGen {
   /// File path: assets/images/dog-face.svg
   SvgGenImage get dogFace => const SvgGenImage('assets/images/dog-face.svg');
 
+  /// File path: assets/images/footprint.png
+  AssetGenImage get footprint =>
+      const AssetGenImage('assets/images/footprint.png');
+
   /// List of all assets
-  List<SvgGenImage> get values => [dogFace];
+  List<dynamic> get values => [dogFace, footprint];
 }
 
 class Assets {

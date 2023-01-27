@@ -10,7 +10,11 @@ abstract class IPetsByIdStringRemoteAdapter<T> {
 }
 
 abstract class IPetsByIdNumRemoteAdapter<T> {
-  Future<T> execute(int id);
+  Future<T> execute(String id);
+}
+
+abstract class ICreatePetRemoteAdapter {
+  Future<void> execute(PetModel pet);
 }
 
 class FetchAllAnimalsAdapter implements IPetsRemoteAdapter<List<PetModel>> {
@@ -43,6 +47,8 @@ class FetchAllCategoriesAdapter
   Future<List<PetCategory>> execute() async {
     try {
       final response = await remoteApi.fetchCategories();
+
+      print("RESPONSE >> $response");
 
       final result =
           response.map<PetCategory>((e) => PetCategory.fromJson(e)).toList();
@@ -80,12 +86,27 @@ class FetchAnimalDetailsAdapter implements IPetsByIdNumRemoteAdapter<PetModel> {
   FetchAnimalDetailsAdapter(this.remoteApi);
 
   @override
-  Future<PetModel> execute(int petId) async {
+  Future<PetModel> execute(String petId) async {
     try {
       final response = await remoteApi.fetchAnimalDetails(petId);
       final result = PetModel.fromJson(response);
 
       return Future.value(result);
+    } catch (_) {
+      rethrow;
+    }
+  }
+}
+
+class CreatePetAdapter implements ICreatePetRemoteAdapter {
+  final IPetsRemoteApi remoteApi;
+
+  CreatePetAdapter(this.remoteApi);
+
+  @override
+  Future<void> execute(PetModel pet) async {
+    try {
+      await remoteApi.createNewPetAdvertisement(data: pet.toJson());
     } catch (_) {
       rethrow;
     }

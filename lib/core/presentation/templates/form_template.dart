@@ -8,8 +8,9 @@ import '../../../gen/assets.gen.dart';
 class FormTemplate extends StatelessWidget {
   final Widget? content;
   final SvgPicture? petPicture;
+  final bool showPicture;
 
-  const FormTemplate({this.content, this.petPicture});
+  const FormTemplate({this.content, this.petPicture, this.showPicture = true});
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +25,12 @@ class FormTemplate extends StatelessWidget {
           Sizes.doublePadding,
         ),
         child: Stack(fit: StackFit.expand, clipBehavior: Clip.none, children: [
-          Positioned(
-            right: -30,
-            top: -10,
-            child: petPicture ?? Assets.images.dogFace.svg(width: 270),
-          ),
+          if (showPicture)
+            Positioned(
+              right: -30,
+              top: -10,
+              child: petPicture ?? Assets.images.dogFace.svg(width: 270),
+            ),
           content ?? const SizedBox(),
         ]),
       ),

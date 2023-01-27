@@ -4,6 +4,7 @@ import 'package:pets_adoption/core/network_connectivity/network_connectivity.dar
 import 'package:pets_adoption/features/pets/data/data_sources/pets_api.dart';
 import 'package:pets_adoption/features/pets/data/data_sources/pets_cache_api.dart';
 import 'package:pets_adoption/features/pets/data/repositories/pets_repository.dart';
+import 'package:pets_adoption/features/pets/domain/usecases/create_pet_advertisement.dart';
 import 'package:pets_adoption/features/pets/domain/usecases/get_pets_by_category.dart';
 import 'package:pets_adoption/features/pets/pets.dart';
 import 'package:pets_adoption/features/pets/presentation/cubits/new_pet_cubit.dart';
@@ -78,6 +79,13 @@ abstract class PetsModule {
   ) {
     return GetPetDetails(repository);
   }
+
+  @singleton
+  CreatePetAdvertisement createPetAdvertisement(
+    IPetsRepository repository,
+  ) {
+    return CreatePetAdvertisement(repository);
+  }
 //#endregion UseCases
 
 //#region Cubits
@@ -99,8 +107,8 @@ abstract class PetsModule {
   }
 
   @injectable
-  NewPetCubit newPetCubit() {
-    return NewPetCubit();
+  NewPetCubit newPetCubit(CreatePetAdvertisement createPetAdvertisement) {
+    return NewPetCubit(createPetAdvertisement: createPetAdvertisement);
   }
 
 //#endregion Cubits

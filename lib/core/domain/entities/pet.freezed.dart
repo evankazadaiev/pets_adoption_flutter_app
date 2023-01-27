@@ -20,7 +20,7 @@ PetModel _$PetModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PetModel {
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get categoryId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get breedName => throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ abstract class $PetModelCopyWith<$Res> {
       _$PetModelCopyWithImpl<$Res, PetModel>;
   @useResult
   $Res call(
-      {int id,
+      {String id,
       String categoryId,
       String name,
       String breedName,
@@ -78,7 +78,7 @@ class _$PetModelCopyWithImpl<$Res, $Val extends PetModel>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       categoryId: null == categoryId
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
@@ -119,7 +119,7 @@ abstract class _$$_PetModelCopyWith<$Res> implements $PetModelCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int id,
+      {String id,
       String categoryId,
       String name,
       String breedName,
@@ -153,7 +153,7 @@ class __$$_PetModelCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       categoryId: null == categoryId
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
@@ -204,7 +204,7 @@ class _$_PetModel implements _PetModel {
       _$$_PetModelFromJson(json);
 
   @override
-  final int id;
+  final String id;
   @override
   final String categoryId;
   @override
@@ -280,7 +280,7 @@ class _$_PetModel implements _PetModel {
 
 abstract class _PetModel implements PetModel {
   const factory _PetModel(
-      {required final int id,
+      {required final String id,
       required final String categoryId,
       required final String name,
       required final String breedName,
@@ -292,7 +292,7 @@ abstract class _PetModel implements PetModel {
   factory _PetModel.fromJson(Map<String, dynamic> json) = _$_PetModel.fromJson;
 
   @override
-  int get id;
+  String get id;
   @override
   String get categoryId;
   @override

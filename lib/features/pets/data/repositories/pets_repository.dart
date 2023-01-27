@@ -25,6 +25,7 @@ class PetsRepository implements IPetsRepository {
   late final FetchAllCategoriesAdapter _fetchAllCategoriesAdapter;
   late final FetchAnimalDetailsAdapter _fetchAnimalDetailsAdapter;
   late final FetchAllAnimalsByCategoryAdapter _fetchAllAnimalsByCategoryAdapter;
+  late final CreatePetAdapter _createPetAdapter;
 
   final INetworkConnectivity networkConnectivity;
 
@@ -39,7 +40,8 @@ class PetsRepository implements IPetsRepository {
         _fetchAllCategoriesAdapter = FetchAllCategoriesAdapter(petsRemoteApi),
         _fetchAnimalDetailsAdapter = FetchAnimalDetailsAdapter(petsRemoteApi),
         _fetchAllAnimalsByCategoryAdapter =
-            FetchAllAnimalsByCategoryAdapter(petsRemoteApi);
+            FetchAllAnimalsByCategoryAdapter(petsRemoteApi),
+        _createPetAdapter = CreatePetAdapter(petsRemoteApi);
 
   @override
   Future<Either<Failure, List<PetCategory>>> getAllCategories() async {
@@ -102,7 +104,7 @@ class PetsRepository implements IPetsRepository {
   }
 
   @override
-  Future<Either<Failure, PetModel>> getPetDetails(int id) async {
+  Future<Either<Failure, PetModel>> getPetDetails(String id) async {
     try {
       final response = await _fetchAnimalDetailsAdapter.execute(id);
 
@@ -148,9 +150,14 @@ class PetsRepository implements IPetsRepository {
 
   @override
   Future<Either<Failure, SuccessEmpty>> createPetAdvertisement(
-      {required PetModel data}) {
-    // TODO: implement createPetAdvertisement
-    throw UnimplementedError();
+      {required PetModel data}) async {
+    try {
+      await _createPetAdapter.execute(data);
+
+      return const Right(SuccessEmpty());
+    } catch (_) {
+      return const Left(ServerFailure());
+    }
   }
 
   @override
