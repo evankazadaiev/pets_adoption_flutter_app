@@ -6,6 +6,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:pets_adoption/core/domain/entities/entities.dart';
 import 'package:pets_adoption/core/domain/enums/enums.dart';
+import 'package:pets_adoption/core/domain/usecases/pets/get_categories.dart';
+import 'package:pets_adoption/core/presentation/cubits/pets/categories_cubit.dart';
 import 'package:pets_adoption/features/pets/pets.dart';
 
 import '../../../../fixtures/fixture_reader.dart';

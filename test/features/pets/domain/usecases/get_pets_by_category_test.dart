@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:pets_adoption/core/domain/entities/entities.dart';
-import 'package:pets_adoption/features/pets/domain/repositories/pets_repository_interface.dart';
+import 'package:pets_adoption/core/domain/repositories/pets_repository_interface.dart';
 import 'package:pets_adoption/features/pets/domain/usecases/get_pets_by_category.dart';
 
 class MockPetsRepository extends Mock implements IPetsRepository {}
@@ -19,7 +19,7 @@ void main() {
   const testCategoryId = "dogs";
   final testAllPets = [
     const PetModel(
-        id: 1,
+        id: '1',
         categoryId: "dogs",
         name: "Nicky",
         breedName: "test",

@@ -9,7 +9,7 @@ import 'package:pets_adoption/features/pets/presentation/widgets/search_input.da
 import 'package:pets_adoption/injection.dart';
 
 import '../../../../app/theme/cubit/app_theme_cubit.dart';
-import '../cubits/categories_cubit.dart';
+import '../../../../core/presentation/cubits/pets/categories_cubit.dart';
 import '../widgets/pets_sliver_grid.dart';
 
 class PetsHomeScreen extends StatelessWidget {
@@ -35,8 +35,6 @@ class PetsHomeScreen extends StatelessWidget {
       child: SafeArea(
           child: MultiBlocProvider(
         providers: [
-          BlocProvider<CategoriesCubit>(
-              create: (_) => di.get()..getAllCategories()),
           BlocProvider<PetsCubit>(create: (_) => di.get()..getAllPets())
         ],
         child: PetsHomeScreenContent(),

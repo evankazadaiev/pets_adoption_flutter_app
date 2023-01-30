@@ -1,22 +1,20 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+import 'package:pets_adoption/app/theme/cubit/app_theme_cubit.dart';
 import 'package:pets_adoption/core/constants/sizes.dart';
 import 'package:pets_adoption/core/presentation/templates/form_template.dart';
+import 'package:pets_adoption/core/presentation/widgets/dropdown_bloc_field.dart';
+import 'package:pets_adoption/core/presentation/widgets/radio_bloc_group.dart';
 import 'package:pets_adoption/features/pets/presentation/cubits/new_pet_cubit.dart';
 import 'package:pets_adoption/features/pets/presentation/screens/add_name_breed_details_form.dart';
 
-import '../../../../app/theme/cubit/app_theme_cubit.dart';
-import '../../../../core/presentation/widgets/dropdown_bloc_field.dart';
-import '../../../../core/presentation/widgets/radio_bloc_group.dart';
+import '../../../../core/presentation/cubits/pets/categories_cubit.dart';
 
 class AddCategoryDetailsFormBloc extends FormBloc<String, String> {
-  final petCategory = SelectFieldBloc(
-    validators: [
-      FieldBlocValidators.required,
-    ],
-    items: ['Option 1', 'Option 2'],
-  );
+  final petCategory = SelectFieldBloc(validators: [
+    FieldBlocValidators.required,
+  ], items: []);
 
   final sex = SelectFieldBloc(
     validators: [
@@ -84,23 +82,31 @@ class AddCategoryDetailsForm extends StatelessWidget {
     AddNameBreedDetailsForm.open(ctx);
   }
 
+  AddCategoryDetailsFormBloc _createFormHandler(BuildContext ctx) {
+    final categories = ctx.read<CategoriesCubit>().state.categories;
+
+    print("Categories >>> $categories");
+    final bloc = AddCategoryDetailsFormBloc();
+
+    for (var e in categories) {
+      print(e.title);
+      bloc.petCategory.addItem(e.title);
+    }
+
+    return bloc;
+  }
+
   @override
   Widget build(BuildContext context) {
     return FormTemplate(
       content: BlocProvider(
-        create: (_) => AddCategoryDetailsFormBloc(),
+        create: _createFormHandler,
         child: Builder(
           builder: (context) {
             final addPetFormBloc = context.read<AddCategoryDetailsFormBloc>();
-
+            print(context.read<CategoriesCubit>().state);
             return FormBlocListener<AddCategoryDetailsFormBloc, String, String>(
               onSuccess: _onSuccessHandler,
-              onFailure: (context, state) {
-                // LoadingDialog.hide(context);
-
-                ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text(state.failureResponse!)));
-              },
               child: Column(
                 key: const ValueKey(path),
                 mainAxisAlignment: MainAxisAlignment.center,

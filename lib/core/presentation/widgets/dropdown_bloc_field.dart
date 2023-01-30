@@ -3,7 +3,7 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 import '../../../app/theme/models/app_palette.dart';
 
-class DropdownBlocField<T extends String> extends StatelessWidget {
+class DropdownBlocField<T> extends StatelessWidget {
   final SelectFieldBloc<T, dynamic> selectFieldBloc;
   // final Iterable<String>? autofillHints;
   final String? labelText;
@@ -24,8 +24,7 @@ class DropdownBlocField<T extends String> extends StatelessWidget {
     return BlocBuilder<SelectFieldBloc<T, dynamic>,
             SelectFieldBlocState<T, dynamic>>(
         bloc: selectFieldBloc,
-        builder: (ctx, fieldState) {
-          print(fieldState);
+        builder: (_, fieldState) {
           return DropdownFieldBlocBuilder(
               showEmptyItem: false,
               selectFieldBloc: selectFieldBloc,
@@ -42,7 +41,7 @@ class DropdownBlocField<T extends String> extends StatelessWidget {
                   )),
               itemBuilder: (_, value) => FieldItem(
                     child: Text(
-                      value,
+                      value as String,
                       style: TextStyle(color: Colors.black54.withOpacity(0.5)),
                     ),
                   ));

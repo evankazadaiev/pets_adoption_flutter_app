@@ -3,13 +3,13 @@ import 'dart:async';
 import 'package:dartz/dartz.dart';
 import 'package:pets_adoption/core/domain/entities/pet.dart';
 import 'package:pets_adoption/core/domain/entities/pet_category.dart';
+import 'package:pets_adoption/core/domain/repositories/pets_repository_interface.dart';
 import 'package:pets_adoption/core/domain/usecases/success.dart';
 import 'package:pets_adoption/core/error/exceptions.dart';
 import 'package:pets_adoption/core/error/failures.dart';
 import 'package:pets_adoption/core/network_connectivity/network_connectivity.dart';
 import 'package:pets_adoption/features/pets/data/data_sources/pets_api.dart';
 import 'package:pets_adoption/features/pets/data/data_sources/pets_cache_api.dart';
-import 'package:pets_adoption/features/pets/domain/repositories/pets_repository_interface.dart';
 
 import '../adapters/pets_adapter.dart';
 import '../adapters/pets_cache_adapter.dart';

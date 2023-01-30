@@ -4,13 +4,13 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:pets_adoption/core/domain/entities/entities.dart';
+import 'package:pets_adoption/core/domain/repositories/pets_repository_interface.dart';
 import 'package:pets_adoption/core/error/exceptions.dart';
 import 'package:pets_adoption/core/error/failures.dart';
 import 'package:pets_adoption/core/network_connectivity/network_connectivity.dart';
 import 'package:pets_adoption/features/pets/data/data_sources/pets_api.dart';
 import 'package:pets_adoption/features/pets/data/data_sources/pets_cache_api.dart';
 import 'package:pets_adoption/features/pets/data/repositories/pets_repository.dart';
-import 'package:pets_adoption/features/pets/domain/repositories/pets_repository_interface.dart';
 
 import '../../../../fixtures/fixture_reader.dart';
 
@@ -211,7 +211,7 @@ void main() {
   });
 
   group("getAnimalDetails", () {
-    const testId = 1;
+    const testId = '1';
     final testPetApiResponse = jsonDecode(fixture("pet.json"));
     final PetModel testPet = PetModel.fromJson(testPetApiResponse);
 
@@ -221,7 +221,7 @@ void main() {
         when(() => mockPetsRemoteApi.fetchAnimalDetails(any()))
             .thenAnswer((_) async => testPetApiResponse);
 
-        final result = await repository.getPetDetails(1);
+        final result = await repository.getPetDetails('1');
 
         verify(() => mockPetsRemoteApi.fetchAnimalDetails(testId));
         expect(result, equals(Right(testPet)));

@@ -1,13 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-import 'package:pets_adoption/app/router/app_router.gr.dart';
 import 'package:pets_adoption/core/constants/sizes.dart';
 import 'package:pets_adoption/core/presentation/templates/form_template.dart';
 import 'package:pets_adoption/core/presentation/widgets/input_bloc_field.dart';
 import 'package:pets_adoption/features/pets/presentation/cubits/new_pet_cubit.dart';
-import 'package:pets_adoption/features/pets/presentation/screens/pets_home_screen.dart';
 import 'package:pets_adoption/features/pets/presentation/widgets/pet_photo_upload.dart';
+
+import 'add_category_details_form.dart';
 
 class AddAnthropometryDetailsFormBloc extends FormBloc<String, String> {
   final photo = TextFieldBloc(
@@ -79,10 +79,8 @@ class AddAnthropometryDetailsForm extends StatelessWidget {
     await ctx.read<NewPetCubit>().createNewPetAdvertisement();
 
     if (ctx.mounted) {
-      ctx.router.pushAndPopUntil(const AddCategoryDetailsFormRoute(),
-          predicate: (_) => false);
-
-      ctx.router.root.navigateNamed(PetsHomeScreen.path);
+      ctx.tabsRouter.setActiveIndex(ctx.tabsRouter.homeIndex);
+      ctx.router.replaceNamed(AddCategoryDetailsForm.path);
     }
   }
 

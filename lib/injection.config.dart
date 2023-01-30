@@ -11,19 +11,23 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'package:shared_preferences/shared_preferences.dart' as _i8;
 
 import 'app/router/app_router.dart' as _i3;
-import 'app/router/router_module.dart' as _i16;
+import 'app/router/router_module.dart' as _i18;
 import 'app/theme/cubit/app_theme_cubit.dart' as _i4;
+import 'core/domain/usecases/pets/get_categories.dart' as _i12;
+import 'core/modules/pets_global_module.dart' as _i21;
+import 'core/modules/shared_global_module.dart' as _i19;
 import 'core/network_connectivity/network_connectivity.dart' as _i6;
+import 'core/presentation/cubits/pets/categories_cubit.dart' as _i17;
 import 'features/pets/data/data_sources/pets_api.dart' as _i7;
 import 'features/pets/data/data_sources/pets_cache_api.dart' as _i9;
 import 'features/pets/domain/usecases/create_pet_advertisement.dart' as _i11;
-import 'features/pets/domain/usecases/get_pets_by_category.dart' as _i12;
+import 'features/pets/domain/usecases/get_pets_by_category.dart' as _i13;
 import 'features/pets/pets.dart' as _i10;
-import 'features/pets/pets_module.dart' as _i17;
-import 'features/pets/presentation/cubits/new_pet_cubit.dart' as _i13;
-import 'features/pets/presentation/cubits/pet_details_cubit.dart' as _i14;
+import 'features/pets/pets_module.dart' as _i20;
+import 'features/pets/presentation/cubits/new_pet_cubit.dart' as _i14;
+import 'features/pets/presentation/cubits/pet_details_cubit.dart' as _i15;
 import 'features/pets/presentation/cubits/pets_cubit.dart'
-    as _i15; // ignore_for_file: unnecessary_lambdas
+    as _i16; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -38,15 +42,17 @@ Future<_i1.GetIt> $initGetIt(
     environmentFilter,
   );
   final routerModule = _$RouterModule();
+  final sharedGlobalModule = _$SharedGlobalModule();
   final petsModule = _$PetsModule();
+  final petsGlobalModule = _$PetsGlobalModule();
   gh.singleton<_i3.AppRouter>(routerModule.appRouter());
   gh.singleton<_i4.AppThemeCubit>(_i4.AppThemeCubit());
-  gh.singleton<_i5.Dio>(petsModule.dioClient());
+  gh.singleton<_i5.Dio>(sharedGlobalModule.dioClient());
   gh.lazySingleton<_i6.INetworkConnectivity>(
       () => petsModule.networkConnectivity());
   gh.singleton<_i7.IPetsRemoteApi>(petsModule.petsRemoteApi(get<_i5.Dio>()));
   await gh.factoryAsync<_i8.SharedPreferences>(
-    () => petsModule.prefs,
+    () => sharedGlobalModule.prefs,
     preResolve: true,
   );
   gh.singleton<_i9.IPetsCacheApi>(
@@ -58,26 +64,30 @@ Future<_i1.GetIt> $initGetIt(
   ));
   gh.singleton<_i11.CreatePetAdvertisement>(
       petsModule.createPetAdvertisement(get<_i10.IPetsRepository>()));
-  gh.singleton<_i10.GetCategories>(
-      petsModule.getCategories(get<_i10.IPetsRepository>()));
+  gh.singleton<_i12.GetCategories>(
+      petsGlobalModule.getCategories(get<_i10.IPetsRepository>()));
   gh.singleton<_i10.GetPetDetails>(
       petsModule.getPetDetails(get<_i10.IPetsRepository>()));
   gh.singleton<_i10.GetPets>(petsModule.getPets(get<_i10.IPetsRepository>()));
-  gh.singleton<_i12.GetPetsByCategory>(
+  gh.singleton<_i13.GetPetsByCategory>(
       petsModule.getPetsByCategory(get<_i10.IPetsRepository>()));
-  gh.factory<_i13.NewPetCubit>(
+  gh.factory<_i14.NewPetCubit>(
       () => petsModule.newPetCubit(get<_i11.CreatePetAdvertisement>()));
-  gh.factory<_i14.PetDetailsCubit>(
+  gh.factory<_i15.PetDetailsCubit>(
       () => petsModule.petDetailsCubit(get<_i10.GetPetDetails>()));
-  gh.factory<_i15.PetsCubit>(() => petsModule.petsCubit(
+  gh.factory<_i16.PetsCubit>(() => petsModule.petsCubit(
         get<_i10.GetPets>(),
-        get<_i12.GetPetsByCategory>(),
+        get<_i13.GetPetsByCategory>(),
       ));
-  gh.factory<_i10.CategoriesCubit>(
-      () => petsModule.categoriesCubit(get<_i10.GetCategories>()));
+  gh.factory<_i17.CategoriesCubit>(
+      () => petsGlobalModule.categoriesCubit(get<_i12.GetCategories>()));
   return get;
 }
 
-class _$RouterModule extends _i16.RouterModule {}
+class _$RouterModule extends _i18.RouterModule {}
 
-class _$PetsModule extends _i17.PetsModule {}
+class _$SharedGlobalModule extends _i19.SharedGlobalModule {}
+
+class _$PetsModule extends _i20.PetsModule {}
+
+class _$PetsGlobalModule extends _i21.PetsGlobalModule {}

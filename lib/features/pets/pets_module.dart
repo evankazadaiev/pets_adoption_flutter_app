@@ -15,13 +15,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 @module
 abstract class PetsModule {
   //#region DataSources
-  @preResolve
-  Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
-
-  @singleton
-  Dio dioClient() {
-    return Dio();
-  }
 
   @singleton
   IPetsRemoteApi petsRemoteApi(Dio client) {
@@ -39,8 +32,8 @@ abstract class PetsModule {
   }
   //#endregion DataSources
 
-  @singleton
   //#region Repositories
+  @singleton
   IPetsRepository petsRepository(IPetsRemoteApi petsRemoteApi,
       IPetsCacheApi petsCacheApi, INetworkConnectivity networkConnectivity) {
     return PetsRepository(
@@ -52,13 +45,6 @@ abstract class PetsModule {
   //#endregion Repositories
 
   //#region UseCases
-  @singleton
-  GetCategories getCategories(
-    IPetsRepository repository,
-  ) {
-    return GetCategories(repository);
-  }
-
   @singleton
   GetPets getPets(
     IPetsRepository repository,
@@ -89,12 +75,6 @@ abstract class PetsModule {
 //#endregion UseCases
 
 //#region Cubits
-  @injectable
-  CategoriesCubit categoriesCubit(
-    GetCategories getCategories,
-  ) {
-    return CategoriesCubit(getCategories: getCategories);
-  }
 
   @injectable
   PetsCubit petsCubit(GetPets getPets, GetPetsByCategory getPetsByCategory) {

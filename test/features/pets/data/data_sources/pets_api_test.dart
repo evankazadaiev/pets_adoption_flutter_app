@@ -112,7 +112,7 @@ void main() {
   });
 
   group("fetchAnimalDetails", () {
-    const testId = 1;
+    const testId = '1';
     final testPet = PetModel.fromJson(json.decode(fixture("pet.json")));
     final testResponseData = json.decode(fixture("pet.json"));
 

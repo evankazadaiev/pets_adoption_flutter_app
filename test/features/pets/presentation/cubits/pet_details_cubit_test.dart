@@ -22,7 +22,7 @@ void main() {
   });
 
   group("fetchAnimalDetails", () {
-    const testPetId = 1;
+    const testPetId = '1';
     final testPetDetails = PetModel.fromJson(json.decode(fixture("pet.json")));
 
     blocTest<PetDetailsCubit, PetDetailsState>(

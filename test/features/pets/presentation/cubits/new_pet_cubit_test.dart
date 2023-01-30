@@ -49,8 +49,8 @@ void main() {
     build: () {
       return cubit;
     },
-    act: (cubit) =>
-        cubit.submitAnthropometry(age: 12, weight: 12, description: "test"),
+    act: (cubit) => cubit.submitAnthropometry(
+        age: 12, weight: 12, description: "test", imageUrl: ''),
     expect: () => <NewPetState>[
       const NewPetState(age: 12, weight: 12, description: "test"),
     ],
@@ -66,7 +66,8 @@ void main() {
     },
     act: (cubit) {
       cubit.submitBriefDetails(petBreed: "test", petName: "test");
-      cubit.submitAnthropometry(age: 12, weight: 12, description: "test");
+      cubit.submitAnthropometry(
+          age: 12, weight: 12, description: "test", imageUrl: '');
       cubit.submitCategoryDetails(
         category: "dogs",
         sex: 'male',

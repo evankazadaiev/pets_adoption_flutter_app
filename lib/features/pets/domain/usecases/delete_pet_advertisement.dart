@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:pets_adoption/core/domain/usecases/success.dart';
 import 'package:pets_adoption/core/error/failures.dart';
 
-import '../repositories/pets_repository_interface.dart';
+import '../../../../core/domain/repositories/pets_repository_interface.dart';
 
 class DeletePetAdvertisement {
   @protected

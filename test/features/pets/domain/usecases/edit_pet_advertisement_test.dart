@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:pets_adoption/core/domain/repositories/pets_repository_interface.dart';
 import 'package:pets_adoption/core/domain/usecases/success.dart';
-import 'package:pets_adoption/features/pets/domain/repositories/pets_repository_interface.dart';
 import 'package:pets_adoption/features/pets/domain/usecases/edit_pet_advertisement.dart';
 
 class MockPetsRepository extends Mock implements IPetsRepository {}
