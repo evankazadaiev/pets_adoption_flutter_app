@@ -123,19 +123,6 @@ class AddCategoryDetailsForm extends StatelessWidget {
                     selectFieldBloc: addPetFormBloc.sex,
                     labelText: 'Sex',
                   ),
-                  // InputBlocField(
-                  //   textFieldBloc: addPetFormBloc.petName,
-                  //   autofillHints: const [
-                  //     AutofillHints.name,
-                  //   ],
-                  //   labelText: 'Pet name',
-                  //   prefixIcon: Icons.pets,
-                  // ),
-                  // InputBlocField(
-                  //   textFieldBloc: addPetFormBloc.petBreed,
-                  //   labelText: 'Pet breed',
-                  //   prefixIcon: Icons.pets,
-                  // ),
                   Row(
                     children: [
                       const SizedBox(

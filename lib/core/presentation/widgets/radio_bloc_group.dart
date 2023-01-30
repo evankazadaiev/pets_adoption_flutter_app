@@ -6,12 +6,7 @@ import '../../../app/theme/models/app_palette.dart';
 
 class RadioBlocGroup<T> extends StatelessWidget {
   final SelectFieldBloc<T, dynamic> selectFieldBloc;
-  // final Iterable<String>? autofillHints;
   final String? labelText;
-  // final IconData? prefixIcon;
-  // final TextInputType? keyboardType;
-  // final String? suffixText;
-  // final int? maxLength;
   const RadioBlocGroup({required this.selectFieldBloc, this.labelText});
 
   @override
@@ -23,28 +18,34 @@ class RadioBlocGroup<T> extends StatelessWidget {
           SelectFieldBlocState<T, dynamic>>(
         bloc: selectFieldBloc,
         builder: (_, fieldState) {
-          return RadioButtonGroupFieldBlocBuilder(
-            canDeselect: false,
-            selectFieldBloc: selectFieldBloc,
-            overlayColor: MaterialStateColor.resolveWith(
-                (states) => Palette.yellow.withOpacity(0.4)),
-            fillColor: MaterialStateColor.resolveWith(
-                (states) => Palette.violetDarker),
-            decoration: InputDecoration(
-                labelText: labelText,
-                labelStyle: const TextStyle(color: Colors.black54),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: fieldState.value != null
-                        ? Palette.yellow
-                        : Colors.white70,
-                  ),
-                  borderRadius: BorderRadius.circular(12),
-                )),
-            itemBuilder: (_, item) => FieldItem(
-              child: Text(
-                item as String,
-                style: const TextStyle(color: Colors.black54),
+          return ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            // borderRadius: AppTheme.of(context)
+            //     .inputTheme
+            //     .radioInput
+            child: RadioButtonGroupFieldBlocBuilder(
+              canDeselect: false,
+              selectFieldBloc: selectFieldBloc,
+              overlayColor: MaterialStateColor.resolveWith(
+                  (states) => Palette.yellow.withOpacity(0.7)),
+              fillColor: MaterialStateColor.resolveWith(
+                  (states) => Palette.violetDarker),
+              decoration: InputDecoration(
+                  labelText: labelText,
+                  labelStyle: const TextStyle(color: Colors.black54),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: fieldState.value != null
+                          ? Palette.yellow
+                          : Colors.white70,
+                    ),
+                    borderRadius: BorderRadius.circular(12),
+                  )),
+              itemBuilder: (_, item) => FieldItem(
+                child: Text(
+                  item as String,
+                  style: const TextStyle(color: Colors.black54),
+                ),
               ),
             ),
           );

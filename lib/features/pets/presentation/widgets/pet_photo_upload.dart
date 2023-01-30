@@ -6,8 +6,7 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart' as sysPaths;
-
-import '../../../../gen/assets.gen.dart';
+import 'package:pets_adoption/gen/assets.gen.dart';
 
 class PetPhotoUpload extends StatelessWidget {
   final TextFieldBloc<dynamic> textFieldBloc;
@@ -18,16 +17,16 @@ class PetPhotoUpload extends StatelessWidget {
     if (Platform.isIOS) {
       return showCupertinoModalPopup<ImageSource>(
           context: context,
-          builder: (context) => CupertinoActionSheet(
+          builder: (ctx) => CupertinoActionSheet(
                 actions: [
                   CupertinoActionSheetAction(
                       onPressed: () {
-                        Navigator.of(context).pop(ImageSource.camera);
+                        Navigator.of(ctx).pop(ImageSource.camera);
                       },
                       child: const Text("Camera")),
                   CupertinoActionSheetAction(
                       onPressed: () {
-                        Navigator.of(context).pop(ImageSource.gallery);
+                        Navigator.of(ctx).pop(ImageSource.gallery);
                       },
                       child: const Text("Gallery")),
                 ],
