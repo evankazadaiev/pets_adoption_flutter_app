@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/constants/sizes.dart';
+import '../../../constants/sizes.dart';
 
 abstract class AppTextTheme {
   TextStyle get body1Medium;

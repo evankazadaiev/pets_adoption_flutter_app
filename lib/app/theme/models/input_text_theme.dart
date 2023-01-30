@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/constants/sizes.dart';
+import '../../../constants/sizes.dart';
 import 'app_palette.dart';
 
 abstract class AppInputsTheme {

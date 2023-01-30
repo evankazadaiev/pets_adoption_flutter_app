@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-import 'package:pets_adoption/core/constants/sizes.dart';
+import 'package:pets_adoption/constants/sizes.dart';
 
 class InputBlocField<T extends dynamic> extends StatelessWidget {
   final TextFieldBloc<T> textFieldBloc;
@@ -17,7 +17,8 @@ class InputBlocField<T extends dynamic> extends StatelessWidget {
       this.labelText,
       this.prefixIcon,
       this.keyboardType = TextInputType.text,
-      this.suffixText, this.maxLength});
+      this.suffixText,
+      this.maxLength});
 
   @override
   Widget build(BuildContext context) {

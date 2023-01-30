@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-import 'package:pets_adoption/core/constants/sizes.dart';
+import 'package:pets_adoption/constants/sizes.dart';
 import 'package:pets_adoption/features/pets/presentation/cubits/new_pet_cubit.dart';
 import 'package:pets_adoption/features/pets/presentation/screens/add_anthropometry_details_form.dart';
 

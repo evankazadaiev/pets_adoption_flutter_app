@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pets_adoption/app/theme/cubit/app_theme_cubit.dart';
 import 'package:pets_adoption/app/theme/models/app_palette.dart';
-import 'package:pets_adoption/core/constants/sizes.dart';
+import 'package:pets_adoption/constants/sizes.dart';
 import 'package:pets_adoption/core/domain/enums/fetch_state.dart';
 import 'package:pets_adoption/core/presentation/cubits/pets/categories_cubit.dart';
 import 'package:pets_adoption/features/pets/presentation/cubits/pets_cubit.dart';

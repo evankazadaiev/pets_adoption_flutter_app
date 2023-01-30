@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pets_adoption/app/theme/cubit/app_theme_cubit.dart';
-import 'package:pets_adoption/core/constants/sizes.dart';
+import 'package:pets_adoption/constants/sizes.dart';
 
 class GreetingText extends StatelessWidget {
   const GreetingText({Key? key}) : super(key: key);
